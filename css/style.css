@@ -1,0 +1,122 @@
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo-icon {
+    font-size: 28px;
+    color: #ffc107;
+    margin-right: 8px;
+}
+
+.brand-text span {
+    color: #ffc107;
+}
+
+.hero {
+    background: #f8f9fa;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.hero span {
+    color: orange;
+}
+
+.kendaraan-img {
+    width: 100%;
+    max-width: 200px;
+    height: 130px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.kendaraan-img:hover {
+    transform: scale(1.1);
+}
+
+body {
+    background-color: wheat
+}
+
+/* Navbar */
+.navbar {
+    background-color:#1c60a4;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Judul */
+h2 {
+    color: #1c60a4;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    color:#1c60a4;
+    margin-bottom: 30px;
+}
+
+/* Card buku */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    border: none;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Cover */
+.cover {
+    height: 150px;
+    background: #1c60a4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color:
+}
+
+/* Isi card */
+.card-body {
+    background-color: #1c60a4;
+    text-align: center;
+}
+
+/* Harga */
+.price {
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+/* Kategori */
+.kategori-card {
+    border-radius: 15px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Footer */
+.footer {
+    background: #1c60a4;
+    color: #1c60a4;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
+}
