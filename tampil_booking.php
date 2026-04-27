@@ -16,19 +16,21 @@
         exit;
     }
 
-    echo "Selamat Datang, " . $_SESSION['username'] . "!";
+    echo "[!] Anda masuk sebagai <b>" . $_SESSION['username'] . "</b>.";
     ?>
     
     <h1>Menampilkan Data Booking VelnoraJogja</h1>
     <!-- Tabel Data -->
     <table border="1">
         <tr>
+            <th>ID Booking</th>
             <th>Nama</th>
             <th>Email</th>
             <th>No Hp</th>
             <th>Jenis Kendaraan</th>
             <th>Tanggal</th>
             <th>Lama Sewa</th>
+            <th>Aksi</th>
         </tr>
 
     <?php
@@ -38,15 +40,19 @@
     while($data = mysqli_fetch_array($query)){
     ?>
     <tr>
+        <td><?php echo $data['id_booking']?></td>
         <td><?php echo $data['nama']?></td>
         <td><?php echo $data['email']?></td>
         <td><?php echo $data['no_hp']?></td>
         <td><?php echo $data['jenis_kendaraan']?></td>
         <td><?php echo date('d M Y', strtotime($data['tanggal'])); ?></td>
         <td><?php echo $data['lama_sewa'] . " hari"?></td>
+        <td><a href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">
+            Edit</a></td>
     </tr>
     <?php } ?>
     </table>
+    <br>
     <form action="dashboard.php" method="POST">
         <input type="submit" value="Kembali">
     </form>

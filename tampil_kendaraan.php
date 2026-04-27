@@ -5,6 +5,8 @@ if(!isset($_SESSION['username'])){
     header("Location:login.php");
     exit;
 }
+
+echo "[!] Anda masuk sebagai <b>" . $_SESSION['username'] . "<b>.";
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +27,7 @@ if(!isset($_SESSION['username'])){
             <th>ID Kendaraan</th>
             <th>Jenis Kendaraan</th>
             <th>Harga Sewa (per hari)</th>
-            <th colspan="2">Opsi</th>
+            <th colspan="2">Aksi</th>
         </tr>
 
         <?php
@@ -47,6 +49,7 @@ if(!isset($_SESSION['username'])){
         </tr>
         <?php } ?>
     </table>
+    <br>
     <form action="dashboard.php" method="POST">
         <input type="submit" value="Kembali">
     </form>
