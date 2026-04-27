@@ -22,8 +22,10 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#kendaraan">Kendaraan</a></li>
-        <li class="nav-item"><a class="nav-link" href="form.php">Booking</a></li>
+        <li class="nav-item"><a class="nav-link" href="form_booking.php">Booking</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="login_db.php">Admin Login</a></li>
+      </ul>
       </ul>
     </div>
   </div>

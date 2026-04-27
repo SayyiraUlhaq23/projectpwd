@@ -23,12 +23,12 @@
     <!-- Tabel Data -->
     <table border="1">
         <tr>
-            <td>Nama</td>
-            <td>Email</td>
-            <td>No Hp</td>
-            <td>Jenis Kendaraan</td>
-            <td>Tanggal</td>
-            <td>Lama Sewa</td>
+            <th>Nama</th>
+            <th>Email</th>
+            <th>No Hp</th>
+            <th>Jenis Kendaraan</th>
+            <th>Tanggal</th>
+            <th>Lama Sewa</th>
         </tr>
 
     <?php
@@ -42,7 +42,7 @@
         <td><?php echo $data['email']?></td>
         <td><?php echo $data['no_hp']?></td>
         <td><?php echo $data['jenis_kendaraan']?></td>
-        <td><?php echo $data['tanggal']?></td>
+        <td><?php echo date('d M Y', strtotime($data['tanggal'])); ?></td>
         <td><?php echo $data['lama_sewa'] . " hari"?></td>
     </tr>
     <?php } ?>
