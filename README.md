@@ -42,7 +42,7 @@ Sistem ini memungkinkan pengguna untuk melihat informasi kendaraan wisata sepert
 ### // CONTRIBUTORS
 #### **Development Team | SI-D**
 * **Yunita Rachmawati** | 124250151
-* **Sayyira Ulhaq Ruqmana** | 124250156
+* **Sayyira Ulhaq Rukmana** | 124250156
 
 
 <div align="center">
