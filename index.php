@@ -40,7 +40,7 @@
     </div>
 
     <div class="col-md-6 text-center">
-      <img src="vespadepan.jpg" width="120">
+      <img src="assets/vespadepan.jpg" width="120">
     </div>
 
   </div>
@@ -54,7 +54,7 @@
     <!-- VW -->
     <div class="col-md-4">
       <div class="card shadow text-center">
-        <img src="mobilvw.jpg">
+        <img src="assets/mobilvw.jpg">
         <div class="card-body">
           <h5>VW (Mobil Wisata)</h5>
           <p>Cocok untuk keluarga & rombongan</p>
@@ -67,7 +67,7 @@
     <!-- Vespa -->
     <div class="col-md-4">
       <div class="card shadow text-center">
-        <img src="vespa1.png">
+        <img src="assets/vespa1.png">
         <div class="card-body">
           <h5>Vespa</h5>
           <p>Stylish untuk jalan santai di Jogja</p>
@@ -80,7 +80,7 @@
     <!-- Sepeda -->
     <div class="col-md-4">
       <div class="card shadow text-center">
-        <img src="sepeda.jpg">
+        <img src="assets/sepeda.jpg">
         <div class="card-body">
           <h5>Sepeda</h5>
           <p>Santai keliling wisata Jogja</p>
