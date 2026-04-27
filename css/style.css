@@ -1,3 +1,7 @@
+.navbar {
+    background-color: #1c60a4;
+}
+
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -16,9 +20,29 @@
 }
 
 .hero {
-    background: #f8f9fa;
-    padding: 80px 0;
+    height: 100vh;
+    background: url('../assets/vespadepan.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
     text-align: center;
+    color: white;
+    position: relative;
+}
+
+/* /.hero::before { */
+    /* content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    /* background: rgba(0,0,0,0.5); */
+/*  */
+
+.hero .row {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -28,6 +52,33 @@
 
 .hero span {
     color: orange;
+}
+
+body {
+    background-color: wheat;
+}
+
+h2 {
+    color: #1c60a4;
+    text-align: center;
+    font-weight: bold;
+}
+
+.subtitle {
+    text-align: center;
+    color: #1c60a4;
+    margin-bottom: 30px;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    border: none;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .kendaraan-img {
@@ -43,45 +94,6 @@
     transform: scale(1.1);
 }
 
-body {
-    background-color: wheat
-}
-
-/* Navbar */
-.navbar {
-    background-color:#1c60a4;
-}
-
-.navbar-brand {
-    font-weight: bold;
-}
-
-/* Judul */
-h2 {
-    color: #1c60a4;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Subtitle */
-.subtitle {
-    text-align: center;
-    color:#1c60a4;
-    margin-bottom: 30px;
-}
-
-.card {
-    border-radius: 15px;
-    overflow: hidden;
-    border: none;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-/* Cover */
 .cover {
     height: 150px;
     background: #1c60a4;
@@ -89,32 +101,29 @@ h2 {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color:
+    color: white; /* FIX ERROR */
 }
 
-/* Isi card */
 .card-body {
     background-color: #1c60a4;
     text-align: center;
+    color: white; /* biar kebaca */
 }
 
-/* Harga */
 .price {
-    color: #ff69b4;
+    color: #ffc107;
     font-weight: bold;
 }
 
-/* Kategori */
 .kategori-card {
     border-radius: 15px;
     text-align: center;
     padding: 20px;
 }
 
-/* Footer */
 .footer {
     background: #1c60a4;
-    color: #1c60a4;
+    color: white; /* FIX biar kelihatan */
     text-align: center;
     padding: 15px;
     margin-top: 50px;
