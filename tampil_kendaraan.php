@@ -5,6 +5,8 @@ if(!isset($_SESSION['username'])){
     header("Location:login.php");
     exit;
 }
+
+echo "[!] Anda masuk sebagai <b>" . $_SESSION['username'] . "<b>.";
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +19,15 @@ if(!isset($_SESSION['username'])){
   
 <body>
     <h1>Menampilkan Data Kendaraan Sewa</h1>
-    <a href="form_kendaraan.php">Tambah Data</a>
+    <a href="form_kendaraan.php">+ Tambah Data</a>
     <!-- Tabel Data -->
+    <br>
     <table border="1">
         <tr>
-            <td>ID Kendaraan</td>
-            <td>Jenis Kendaraan</td>
-            <td>Harga Sewa (per hari)</td>
+            <th>ID Kendaraan</th>
+            <th>Jenis Kendaraan</th>
+            <th>Harga Sewa (per hari)</th>
+            <th colspan="2">Aksi</th>
         </tr>
 
         <?php
@@ -36,11 +40,16 @@ if(!isset($_SESSION['username'])){
             <td><?php echo $data['id_kendaraan']?></td>
             <td><?php echo $data['jenis_kendaraan']?></td>
             <td><?php echo $data['harga_sewa']?></td>
-            <td><a href="edit_kendaraan.php?id_kendaraan=<?php echo $data['id_kendaraan']; ?>">
-                Edit Data</a></td>
+            <td>
+                <a href="edit_kendaraan.php?id_kendaraan=<?php echo $data['id_kendaraan']; ?>">
+                Edit</a> |
+                <a href="delete_kendaraan.php?id_kendaraan=<?php echo $data['id_kendaraan']; ?>" 
+                onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
+            </td>
         </tr>
         <?php } ?>
     </table>
+    <br>
     <form action="dashboard.php" method="POST">
         <input type="submit" value="Kembali">
     </form>
