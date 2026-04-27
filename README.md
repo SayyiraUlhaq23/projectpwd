@@ -1,6 +1,5 @@
-<div align="center">
-  # PRAKTIKUM PEMROGRAMAN WEB DASAR || PROJEK FINAL
-</div>
+# PRAKTIKUM PEMROGRAMAN WEB DASAR || PROJEK FINAL
+
 <div align="center">
   <p>✦ <i>Sistem Informasi Penyewaan Kendaraan Wisata berbasis Web</i> ✦</p>
 </div>
