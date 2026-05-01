@@ -1,130 +1,177 @@
 .navbar {
-    background-color: #1c60a4;
+    background-color: #023b39;
+    padding: 15px 30px;
 }
 
 .navbar-brand {
-    display: flex;
-    align-items: center;
     font-weight: bold;
     font-size: 20px;
+    color: white;
 }
 
-.logo-icon {
-    font-size: 28px;
-    color: #ffc107;
-    margin-right: 8px;
+.navbar a {
+    color: white;
+    margin-left: 15px;
+    transition: 0.3s;
 }
 
-.brand-text span {
+.navbar a:hover {
     color: #ffc107;
 }
 
 .hero {
-    height: 100vh;
-    background: url('../assets/vespadepan.jpg') no-repeat center center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: white;
     position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 100px;
 }
 
-/* /.hero::before { */
-    /* content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; */
-    /* background: rgba(0,0,0,0.5); */
-/*  */
+.hero-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
 
-.hero .row {
-    position: relative;
-    z-index: 2;
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-50%);
+    color: #023b39;
+    max-width: 500px;
 }
 
 .hero h1 {
-    font-size: 48px;
+    font-size: 55px;
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .hero span {
-    color: orange;
+    color: #023b39;
 }
 
-body {
+.hero p {
+    margin: 15px 0;
+    font-size: 18px;
+}
+
+.hero .btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+}
+
+.body {
     background-color: wheat;
 }
 
-h2 {
-    color: #1c60a4;
-    text-align: center;
-    font-weight: bold;
+.section {
+    padding: 60px 0;
 }
 
-.subtitle {
+.h2 {
+    color: #023b39;
     text-align: center;
-    color: #1c60a4;
-    margin-bottom: 30px;
+    font-weight: bold;
 }
 
 .card {
-    border-radius: 15px;
-    overflow: hidden;
-    border: none;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.kendaraan-img {
-    width: 100%;
-    max-width: 200px;
-    height: 130px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-
-.kendaraan-img:hover {
-    transform: scale(1.1);
-}
-
-.cover {
-    height: 150px;
-    background: #1c60a4;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: white; /* FIX ERROR */
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+    padding: 15px;
+    background: white;
 }
 
 .card-body {
-    background-color: #1c60a4;
-    text-align: center;
-    color: white; /* biar kebaca */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #023b39;
+    color: white;
 }
 
-.price {
-    color: #ffc107;
+.card .btn {
+    margin-top: auto; 
+}
+
+.text-warning {
     font-weight: bold;
+    font-size: 16px;
 }
 
-.kategori-card {
-    border-radius: 15px;
+.kendaraan {
+    margin-top: 100px;
+}
+
+/* =======================
+   ABOUT SECTION
+======================= */
+.about-section {
+    padding: 80px 0;
+    background: linear-gradient(to right, white);
+}
+
+.about-card {
+    max-width: 700px;
+    margin: auto;
+    background: #023b39;
+    padding: 40px;
+    border-radius: 20px;
     text-align: center;
-    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.about-title {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 45px;
+}
+
+.about-text {
+    color:white;
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.info-item span {
+    font-size: 20px;
 }
 
 .footer {
-    background: #1c60a4;
-    color: white; /* FIX biar kelihatan */
+    background: #023b39;
+    color: white;
     text-align: center;
     padding: 15px;
-    margin-top: 50px;
+}
+
+.footer p{
+    color: white;
 }
