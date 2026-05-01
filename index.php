@@ -47,8 +47,7 @@
           <div class="card-body">
             <h5>VW (Mobil Wisata)</h5>
             <p>Cocok untuk keluarga & rombongan</p>
-            <h6 class="text-warning">Rp 500.000 / hari</h6>
-            <a href="form.php" class="btn btn-warning">Sewa</a>
+            <div class="btn btn-warning">Rp 500.000 / hari</div>
           </div>
         </div>
       </div>
@@ -60,8 +59,7 @@
           <div class="card-body">
             <h5>Vespa</h5>
             <p>Stylish untuk jalan santai di Jogja</p>
-            <h6 class="text-warning">Rp 200.000 / hari</h6>
-            <a href="form.php" class="btn btn-warning">Sewa</a>
+            <div class="btn btn-warning">Rp 200.000 / hari</div>
           </div>
         </div>
       </div>
@@ -73,8 +71,7 @@
           <div class="card-body">
             <h5>Sepeda</h5>
             <p>Santai keliling wisata Jogja</p>
-            <h6 class="text-warning">Rp 30.000 / hari</h6>
-            <a href="form.php" class="btn btn-warning">Sewa</a>
+           <div class="btn btn-warning">Rp 30.000 / hari</div>
           </div>
         </div>
       </div>
