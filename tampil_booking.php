@@ -28,9 +28,10 @@
             <th>Email</th>
             <th>No Hp</th>
             <th>Jenis Kendaraan</th>
-            <th>Tanggal</th>
+            <th>Tanggal Booking</th>
             <th>Lama Sewa</th>
-            <th>Aksi</th>
+            <th>Total</th>
+            <th colspan="2">Aksi</th>
         </tr>
 
     <?php
@@ -47,8 +48,11 @@
         <td><?php echo $data['jenis_kendaraan']?></td>
         <td><?php echo date('d M Y', strtotime($data['tanggal'])); ?></td>
         <td><?php echo $data['lama_sewa'] . " hari"?></td>
-        <td><a href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">
-            Edit</a></td>
+        <td>
+            <a href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">
+                Edit</a> |
+                <a href="delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
+                onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
     </tr>
     <?php } ?>
     </table>

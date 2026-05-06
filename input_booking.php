@@ -1,41 +1,32 @@
 <?php
 include 'koneksi.php';
+session_start();
 
-$nama = $_POST['nama'];
-$email = $_POST['email'];
-$no_hp = $_POST['no_hp'];
-$id_kendaraan = $_POST['id_kendaraan'];
-$tanggal = $_POST['tanggal'];
-$lama_sewa = $_POST['lama_sewa'];
+$nama = $_GET['nama']?? '';
+$email = $_GET['email']?? '';
+$no_hp = $_GET['no_hp']?? '';
+$id_kendaraan = $_GET['id_kendaraan'] ?? '';
+$tanggal = $_GET['tanggal'] ?? '';
+$lama_sewa = $_GET['lama_sewa'] ?? '';
+$metode_pembayaran = $_GET['metode_pembayaran'] ?? '';
 
+if ($nama && $email && $id_kendaraan) {
 
-$query = mysqli_query($konek, "INSERT INTO booking(nama,email,no_hp,id_kendaraan,tanggal,lama_sewa)
-VALUES('$nama','$email','$no_hp','$id_kendaraan','$tanggal','$lama_sewa')");
+    $query = mysqli_query($konek, "INSERT INTO booking(nama,email,no_hp,id_kendaraan,tanggal,lama_sewa,metode_pembayaran)
+        VALUES
+        ('$nama','$email','$no_hp','$id_kendaraan','$tanggal','$lama_sewa','$metode_pembayaran')");
 
+    $id = mysqli_insert_id($konek);
+    $id_booking = "BK" . str_pad($id, 3, '0', STR_PAD_LEFT);
+
+    if($query){
+        header("Location: landing.php?id_booking=$id_booking&id_kendaraan=$id_kendaraan&tanggal=$tanggal&lama_sewa=$lama_sewa&metode_pembayaran=$metode_pembayaran");
+        exit;
+    } else {
+        echo "Gagal Menyimpan Data";
+    }
+
+} else {
+    echo "Data tidak lengkap atau kendaraan tidak valid";
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Hasil Booking</title>
-
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="container">
-    <div class="header">Status Booking</div>
-    <div class="content">
-        <?php if($query){ ?>
-            <p class="success">✅ Booking berhasil disimpan!</p>
-        <?php } else { ?>
-            <p class="error">❌ Gagal menyimpan data</p>
-        <?php } ?>
-
-        <a href="form_booking.php">Kembali ke Form</a>
-    </div>
-</div>
-
-</body>
-</html>
