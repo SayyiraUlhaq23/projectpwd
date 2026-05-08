@@ -29,108 +29,45 @@ if (!$data_user) {
 
     <style>
         body {
-            background: linear-gradient(240deg, #fff 25%, #fce9d7 100%);
-            min-height: 100vh;
-            position: relative;
-        }
-
-        body::before {
-            content: "";
-            width: 450px;
-            height: 450px;
-            background: rgba(255,122,0,0.15);
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            filter: blur(90px);
-            z-index: 0;
+            background: #f5f7fa;
         }
 
         .booking-container {
-            max-width: 650px;
-            margin: 70px auto;
-            position: relative;
-            z-index: 2;
+            max-width: 900px;
+            margin: 60px auto;
         }
 
-        .booking-container .card {
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border: none;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-        }
-
-        .booking-container .card-body {
-            padding: 30px;
-        }
-
-        .form-control,
-        .form-select {
-            height: 52px;
-            border-radius: 16px;
-            border: 1px solid #eee;
-            box-shadow: none !important;
-            font-size: 15px;
-        }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #ff7a00;
-            box-shadow: 0 0 0 0.2rem rgba(255,122,0,0.15);
         }
 
         .card-header {
-            background: linear-gradient(135deg, #ff7a00, #ff9a3d);
-            color: #fff;
+            background-color: #023b39;
+            color: white;
             text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            padding: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 15px 15px 0 0;
+            padding: 15px;
         }
 
-        .card-header i {
-            font-size: 18px;
-            vertical-align: middle;
-            font-size: 18px;
-            opacity: 0.9;
+        .btn-primary {
+            background-color: #023b39;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #023b39;
         }
 
         label {
             font-weight: 500;
-            color: #333;
         }
-
-        .form-control:focus,
-        .form-select:focus {
-            border-color: #ff7a00;
-            box-shadow: 0 0 0 0.2rem rgba(255,122,0,0.15);
-        }
-
-        .btn-primary {
-            background: #ff7a00;
-            border: none;
-            padding: 12px;
-            font-weight: 600;
-            border-radius: 16px;
-            transition: 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: #eb6f00;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255,122,0,0.3);
-        }
-
     </style>
 </head>
 
-<body>
     <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
@@ -214,9 +151,10 @@ if (!$data_user) {
                     <select name="id_kendaraan" class="form-select" required>
                         <option value="">-- Pilih Kendaraan --</option>
                         <?php
+                        include 'koneksi.php';
+
                         $query = mysqli_query($konek, "SELECT * FROM kendaraan");
                         while($row = mysqli_fetch_assoc($query)) {
-                        
                             echo "<option value='" . $row['id_kendaraan'] . "'>" . $row['jenis_kendaraan'] . "</option>";
                         }
                         ?>
