@@ -1,36 +1,33 @@
 <?php
 session_start();
-include "koneksi.php";
+include 'koneksi.php';
 
-if (isset($_POST['login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $query = mysqli_query($konek, "SELECT * FROM users WHERE (username='$username' OR email='$username') AND password='$password'");
-
-    if (mysqli_num_rows($query) > 0) {
-        $_SESSION['login'] = true;
-        $_SESSION['username'] = $username;
-        header("Location: index.php");
-        exit;
-    } else {
-        $error = "Username atau password salah!";
-    }
+if (!isset($_SESSION['id_user']) || $_SESSION['status'] != 'login') {
+    header("Location: login_user.php");
+    exit;
 }
+
+$id_user = $_SESSION['id_user'] ?? null;
+
+$query = mysqli_query($konek, "SELECT booking.*, 
+        kendaraan.jenis_kendaraan, kendaraan.gambar FROM booking 
+        JOIN kendaraan ON booking.id_kendaraan = kendaraan.id_kendaraan 
+        WHERE booking.id_user = '$id_user' 
+        ORDER BY booking.id_booking DESC");
 ?>
-    
+
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login User</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservasi Saya</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="loginUser-page">
+<body class="mybooking-page">
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="index.php">
@@ -78,8 +75,9 @@ if (isset($_POST['login'])) {
           </li>
         <?php } else { ?>
             <li class="nav-item">
-              <a class="nav-link nav-login" href="login_user.php">
-              <i class="bi bi-person"></i> Login</a>
+              <a href="login_user.php" class="btn-login">
+                <i class="bi bi-person"></i> Login
+              </a>
             </li>
         <?php } ?>
         </ul>
@@ -88,49 +86,75 @@ if (isset($_POST['login'])) {
 </nav>
 
 <main>
-<div class="container">
-    <div class="auth-card login-card">
-        <div class="login-header">
-            <div class="login-icon">
-                <i class="bi bi-person-circle"></i>
-            </div>
-            <h2>Login User</h2>
-            <p><i>Login melanjutkan reservasi kendaraan favorit Anda.</i></p>
-        </div>
-        <div class="login-body">
-            <?php if (isset($error)) { ?>
-                <div class="error"><?= $error; ?></div>
-            <?php } ?>
-
-            <form action="cek_login.php" method="POST">
-                <div class="input-group custom-input">
-                    <span class="input-group-text">
-                        <i class="bi bi-person"></i>
-                    </span>
-                    <input type="text" name="username" class="form-control" placeholder="Username or Email" required>
-                </div>
-                <div class="input-group custom-input">
-                    <span class="input-group-text">
-                        <i class="bi bi-lock"></i>
-                    </span>
-                    <input type="password" name="password" class="form-control" placeholder="Password" required>
-                </div>
-                <button type="submit" name="login" class="login-btn">
-                    <i class="bi bi-box-arrow-in-right me-1"></i>Login
-                </button>
-            </form>
-
-            <div class="register">
-                <span>Belum memiliki akun?</span>
-                <a href="register.php">Registrasi</a>
-            </div>
-        </div>
+<div class="container py-5">
+    <div class="booking-header mb-4">
+    <div>
+      <h2 class="booking-title">
+        <i class="bi bi-journal-text"></i>
+        Daftar Reservasi Anda
+      </h2>
+      <p class="booking-subtitle">
+        Lihat semua aktivitas pemesanan kendaraan Anda.
+      </p>
     </div>
+      <a href="index.php" class="text-decoration-none text-warning">
+        <i class="bi bi-arrow-left-circle-fill"></i> Kembali ke Beranda
+      </a>
+    </div>
+    <div class="booking-wrapper">
+    <div class="booking-content">
+
+    <?php if (mysqli_num_rows($query) > 0) { ?>
+    <div class="table-responsive">
+        <table class="table booking-table align-middle">
+        <thead>
+        <tr>
+          <th>No</th>
+          <th>Kendaraan</th>
+          <th>Tanggal</th>
+          <th>Lama Sewa</th>
+          <th>Pembayaran</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php
+          $no = 1;
+          while($data = mysqli_fetch_array($query)) {
+        ?>
+        
+        <tr>
+          <td><?= $no++; ?></td>
+          <td class="fw-semibold"><?= $data['jenis_kendaraan']; ?></td>
+          <td><?= $data['tanggal']; ?></td>
+          <td><?= $data['lama_sewa']; ?> Hari</td>
+          <td><?= $data['metode_pembayaran']; ?></td>
+          <td>Rp <?= number_format($data['total_harga']); ?></td>
+          <td>
+            <?php if ($data['status'] == 'done') { ?>
+                <span class="status-done">Done</span>
+            <?php } else { ?>
+                <span class="status-booking">Booking</span>
+            <?php } ?>
+            </td>
+        </tr>
+        <?php } ?>
+        </tbody>
+      </table>
+    </div>
+    <?php } else { ?>
+        <div class="alert alert-warning text-center mt-3 empty-reservasi">
+          Belum ada reservasi
+        </div>
+      
+    <?php } ?>
+  </div>
 </div>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
-</body>
 <footer class="footer">
   <div class="footer-content">
   © 2026 Velnora Jogja
@@ -139,4 +163,5 @@ if (isset($_POST['login'])) {
   </a>
   </div>
 </footer>
+</body>
 </html>

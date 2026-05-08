@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -20,37 +24,54 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">
+            <i class="bi bi-house-door"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#daftar-kendaraan">
+            <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">
+            <i class="bi bi-info-circle"></i> About</a>
+          </li>
 
-<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-<ul class="navbar-nav align-items-lg-center">
-  <li class="nav-item">
-    <a class="nav-link" href="index.php">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#daftar-kendaraan">
-      <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#about">About</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-      Menu
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="form_booking.php">Booking</a></li>
-      <li><a class="dropdown-item" href="register.php">Reservasi Saya</a></li>
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="login_user.php">
-      <i class="bi bi-person"></i> Login</a>
-  </li>
-</ul>
-</div>
-</div>
+        <?php if(isset($_SESSION['status'])){ ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link user-session" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>  
+                <?= $_SESSION['username']; ?>
+                <i class="bi bi-chevron-down dropdown-custom"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item dropdown-menu-custom" href="mybooking.php">
+                  <i class="bi bi-journal-text"></i> Reservasi Saya
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item dropdown-menu-custom text-danger" href="logout.php">
+                  <i class="bi bi-box-arrow-in-right"></i> Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } else { ?>
+            <li class="nav-item">
+              <a class="nav-link nav-login" href="login_user.php">
+              <i class="bi bi-person"></i> Login</a>
+            </li>
+        <?php } ?>
+        </ul>
+      </div>
+    </div>
 </nav>
 
+<main>
 <!-- Hero -->
 <section class="hero">
 <div class="container text-center">
@@ -61,9 +82,16 @@
       <a href="#daftar-kendaraan" class="btn btn-primary btn-dk"><i class="bi bi-grid-3x3-gap me-1"></i>
       Lihat Katalog
       </a>
+    <?php if(isset($_SESSION['status'])) { ?>
       <a href="form_booking.php" class="btn btn-primary btn-booking">Booking Now!
         <i class="bi bi-arrow-up-right ms-2"></i>
       </a>
+    <?php } else { ?>
+      <a href="login_user.php" class="btn btn-primary btn-booking">
+        Booking Now!
+        <i class="bi bi-arrow-up-right ms-2"></i>
+      </a>
+    <?php } ?>
 </div>
 
 <div class="right">
@@ -146,14 +174,12 @@
               <p>Yogyakarta, Indonesia</p>
             </div>
           </div>
-
         </div>
     </div>
 </section>
-
-
-
+</main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+</body>
 <footer class="footer">
   <div class="footer-content">
   © 2026 Velnora Jogja

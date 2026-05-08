@@ -1,36 +1,38 @@
 <?php
-session_start();
-include "koneksi.php";
+include 'koneksi.php';
 
-if (isset($_POST['login'])) {
+if (isset($_POST['register'])) {
+    $nama = $_POST['nama'];
+    $email = $_POST['email'];
+    $no_hp = $_POST['no_hp'];
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = mysqli_query($konek, "SELECT * FROM users WHERE (username='$username' OR email='$username') AND password='$password'");
+    $cek = mysqli_query($konek, "SELECT * FROM users WHERE username='$username' OR email='$email'");
 
-    if (mysqli_num_rows($query) > 0) {
-        $_SESSION['login'] = true;
-        $_SESSION['username'] = $username;
-        header("Location: index.php");
-        exit;
+    if (mysqli_num_rows($cek) > 0) {
+        $error = "Username atau Email sudah terdaftar!";
     } else {
-        $error = "Username atau password salah!";
+        mysqli_query($konek, "INSERT INTO users(nama, email, no_hp, username, password) 
+                    VALUES('$nama', '$email', '$no_hp', '$username', '$password')");
+        header("Location: login_user.php");
+        exit;
     }
 }
 ?>
-    
+
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login User</title>
+    <title>Velnora Jogja</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="loginUser-page">
+<body class="register-page">
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="index.php">
@@ -87,27 +89,43 @@ if (isset($_POST['login'])) {
     </div>
 </nav>
 
-<main>
 <div class="container">
-    <div class="auth-card login-card">
+    <div class="auth-card register-card">
         <div class="login-header">
             <div class="login-icon">
-                <i class="bi bi-person-circle"></i>
+                <i class="bi bi-person-fill-add"></i>
             </div>
-            <h2>Login User</h2>
-            <p><i>Login melanjutkan reservasi kendaraan favorit Anda.</i></p>
+            <h2>Register</h2>
+            <p><i>Buat akun dan mulai pengalaman reservasi kendaraan yang lebih mudah.</i></p>
         </div>
         <div class="login-body">
             <?php if (isset($error)) { ?>
                 <div class="error"><?= $error; ?></div>
             <?php } ?>
-
-            <form action="cek_login.php" method="POST">
+            <form method="POST">
                 <div class="input-group custom-input">
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>
                     </span>
-                    <input type="text" name="username" class="form-control" placeholder="Username or Email" required>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="input-group custom-input">
+                    <span class="input-group-text">
+                        <i class="bi bi-telephone"></i>
+                    </span>
+                    <input type="text" name="no_hp" class="form-control" placeholder="08xx-xxxx-xxxx" required>
+                </div>
+                <div class="input-group custom-input">
+                    <span class="input-group-text">
+                        <i class="bi bi-envelope"></i>
+                    </span>
+                    <input type="text" name="email" class="form-control" placeholder="E-mail" required>
+                </div>
+                <div class="input-group custom-input">
+                    <span class="input-group-text">
+                        <i class="bi bi-at"></i>
+                    </span>
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="input-group custom-input">
                     <span class="input-group-text">
@@ -115,22 +133,20 @@ if (isset($_POST['login'])) {
                     </span>
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
-                <button type="submit" name="login" class="login-btn">
-                    <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                <button type="submit" name="register" class="login-btn">
+                    <i class="bi bi-person-check me-1"></i>Register
                 </button>
             </form>
-
-            <div class="register">
-                <span>Belum memiliki akun?</span>
-                <a href="register.php">Registrasi</a>
+            <div class="bottom-text">
+                Sudah punya akun?
+                <a href="login_user.php">Login</a>
             </div>
         </div>
     </div>
 </div>
-</main>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
-</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 <footer class="footer">
   <div class="footer-content">
   © 2026 Velnora Jogja
@@ -139,4 +155,5 @@ if (isset($_POST['login'])) {
   </a>
   </div>
 </footer>
+</body>
 </html>

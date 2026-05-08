@@ -1,3 +1,22 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+if (!isset($_SESSION['id_user'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id_user = $_SESSION['id_user'];
+
+$query_user = mysqli_query($konek, "SELECT * FROM users WHERE id_user='$id_user'");
+$data_user = mysqli_fetch_assoc($query_user);
+
+if (!$data_user) {
+    die("User tidak ditemukan di database");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -10,42 +29,104 @@
 
     <style>
         body {
-            background: #f5f7fa;
+            background: linear-gradient(240deg, #fff 25%, #fce9d7 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            width: 450px;
+            height: 450px;
+            background: rgba(255,122,0,0.15);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: 0;
         }
 
         .booking-container {
-            max-width: 900px;
-            margin: 60px auto;
+            max-width: 650px;
+            margin: 70px auto;
+            position: relative;
+            z-index: 2;
         }
 
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .booking-container .card {
             border: none;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .booking-container .card-body {
+            padding: 30px;
+        }
+
+        .form-control,
+        .form-select {
+            height: 52px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            box-shadow: none !important;
+            font-size: 15px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #ff7a00;
+            box-shadow: 0 0 0 0.2rem rgba(255,122,0,0.15);
         }
 
         .card-header {
-            background-color: #023b39;
-            color: white;
+            background: linear-gradient(135deg, #ff7a00, #ff9a3d);
+            color: #fff;
             text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            border-radius: 15px 15px 0 0;
-            padding: 15px;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .btn-primary {
-            background-color: #023b39;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #023b39;
+        .card-header i {
+            font-size: 18px;
+            vertical-align: middle;
+            font-size: 18px;
+            opacity: 0.9;
         }
 
         label {
             font-weight: 500;
+            color: #333;
         }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #ff7a00;
+            box-shadow: 0 0 0 0.2rem rgba(255,122,0,0.15);
+        }
+
+        .btn-primary {
+            background: #ff7a00;
+            border: none;
+            padding: 12px;
+            font-weight: 600;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #eb6f00;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,122,0,0.3);
+        }
+
     </style>
 </head>
 
@@ -60,69 +141,82 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">
+            <i class="bi bi-house-door"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#daftar-kendaraan">
+            <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">
+            <i class="bi bi-info-circle"></i> About</a>
+          </li>
 
-<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-<ul class="navbar-nav align-items-lg-center">
-  <li class="nav-item">
-    <a class="nav-link" href="index.php">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#daftar-kendaraan">
-      <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#about">About</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-      Menu
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="form_booking.php">Booking</a></li>
-      <li><a class="dropdown-item" href="register.php">Reservasi Saya</a></li>
-    </ul>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="login_user.php">
-      <i class="bi bi-person"></i> Login</a>
-  </li>
-</ul>
-</div>
-</div>
+        <?php if(isset($_SESSION['status'])){ ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link user-session" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i>  
+                <?= $_SESSION['username']; ?>
+                <i class="bi bi-chevron-down dropdown-custom"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a class="dropdown-item dropdown-menu-custom" href="mybooking.php">
+                  <i class="bi bi-journal-text"></i> Reservasi Saya
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item dropdown-menu-custom text-danger" href="logout.php">
+                  <i class="bi bi-box-arrow-in-right"></i> Logout
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } else { ?>
+            <li class="nav-item">
+              <a href="login_user.php" class="btn-login">
+                <i class="bi bi-person"></i> Login
+              </a>
+            </li>
+        <?php } ?>
+        </ul>
+      </div>
+    </div>
 </nav>
 
 <div class="container booking-container">
     <div class="card">
-        <div class="card-header">
-            Form Booking Velnora Jogja
+        <div class="card-header booking-header">
+            <i class="bi bi-journal-check me-2"></i>
+            Form Booking VelnoraJogja
         </div>
-
         <div class="card-body">
-            <form action="input_booking.php" method="GET">
+            <form action="input_booking.php" method="POST">
                 <div class="mb-3">
                     <label>Nama</label>
-                    <input type="text" name="nama" class="form-control" required>
+                    <input type="text" class="form-control" value="<?= $data_user['nama']; ?>" readonly>
                 </div>
-
                 <div class="mb-3">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" required>
+                    <label>E-mail</label>
+                    <input type="text" class="form-control" value="<?= $data_user['email']; ?>" readonly>
                 </div>
-
                 <div class="mb-3">
-                    <label>No HP</label>
-                    <input type="text" name="no_hp" class="form-control" required>
+                    <label>No. HP</label>
+                    <input type="text" name="no_hp" class="form-control" value="<?= $data_user['no_hp']; ?>">
                 </div>
-
                 <div class="mb-3">
                     <label>Pilih Kendaraan</label>
                     <select name="id_kendaraan" class="form-select" required>
                         <option value="">-- Pilih Kendaraan --</option>
                         <?php
-                        include 'koneksi.php';
-
                         $query = mysqli_query($konek, "SELECT * FROM kendaraan");
                         while($row = mysqli_fetch_assoc($query)) {
+                        
                             echo "<option value='" . $row['id_kendaraan'] . "'>" . $row['jenis_kendaraan'] . "</option>";
                         }
                         ?>
@@ -136,7 +230,7 @@
 
                 <div class="mb-3">
                     <label>Lama Sewa (hari)</label>
-                    <input type="text" name="lama_sewa" class="form-control" required>
+                    <input type="text" name="lama_sewa" class="form-control" min="1" required>
                 </div>
 
                 <div class="mb-3">
@@ -150,17 +244,19 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100">
-                    Submit
+                    Booking Now
                 </button>
             </form>
         </div>
     </div>
 </div>
-
 </body>
 <footer class="footer">
   <div class="footer-content">
   © 2026 Velnora Jogja
+  <a href="login_db.php" class="admin-link">
+    - Admin
+  </a>
   </div>
 </footer>
 </html>

@@ -2,12 +2,18 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
 }
 
 body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 .home-page {
@@ -39,12 +45,20 @@ body {
     position: relative;
 }
 
+.navbar .nav-link.nav-login {
+    color: #ff7a00 !important;
+    font-weight: 500;
+    margin-left: 15px;
+    transition: 0.3s;
+    position: relative;
+}
+
 .navbar .dropdown-menu .dropdown-item {
-  position: relative;
+    position: relative;
 }
 
 .navbar .nav-link::after,
-.dropdown-menu .dropdown-item::after {
+.dropdown-menu::after {
     content: "";
     width: 0%;
     height: 2px;
@@ -60,12 +74,24 @@ body {
     width: 100%;
 }
 
+.logout-icon{
+  color: red !important;
+  font-size: 28px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logout-icon:hover{
+  color: darkred;
+}
+
 .btn-daftar {
-  background: #ff7a00;
-  color: #fff !important;
-  padding: 6px 14px;
-  border-radius: 8px;
-  margin-left: 10px;
+    background: #ff7a00;
+    color: #fff !important;
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin-left: 10px;
 }
 
 .navbar-toggler {
@@ -73,7 +99,50 @@ body {
 }
 
 .navbar-toggler:focus {
-  box-shadow: none;
+    box-shadow: none;
+}
+
+.btn-login{
+    background: #ff8c42;
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    background: #ff7426;
+    color: white !important;
+}
+
+.navbar .btn-login{
+    color: white !important;
+}
+
+.user-session{
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-session i.bi-person-circle{
+    font-size: 24px;
+    color: #ff7a00;
+}
+
+.dropdown-custom{
+    font-size: 14px;
+    margin-left: 2px;
+}
+
+.dropdown-menu-custom{
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 6px;
 }
 
 /* Hero */
@@ -84,7 +153,6 @@ body {
     overflow: hidden;
     background: linear-gradient(240deg, #fff 25%, #fce9d7 100%);
 }
-
 
 .hero .container {
     display: flex;
@@ -100,14 +168,14 @@ body {
 }
 
 .hero h1 {
-  font-size: 42px;
-  font-weight: 700;
-  margin-bottom: 20px;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .hero p {
-  color: #666;
-  margin-bottom: 25px;
+    color: #666;
+    margin-bottom: 25px;
 }
 
 .hero .right {
@@ -173,7 +241,8 @@ body {
     background: #ff7a00;
     border: none;
     color: #fff;
-    border-radius: 10px;
+    font-weight: 500;
+    border-radius: 999px;
     padding: 10px 22px;
 }
 
@@ -369,6 +438,442 @@ body {
     color: #ff7a00;
 }
 
+/* LOGIN USER */
+
+.loginUser-page,
+.register-page {
+    background: linear-gradient(240deg, #fff 25%, #fce9d7 100%);
+    min-height: 100vh;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.register-page {
+    background: linear-gradient(to top right, #fff 25%, #fce9d7 100%);
+}
+
+.loginUser-page::before,
+.register-page::before {
+    content: "";
+    width: 450px;
+    height: 450px;
+    background: rgba(255,122,0,0.15);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 1;
+}
+
+.auth-card{
+    width: 100%;
+    margin: 70px auto;
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px 35px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.login-card{
+    max-width: 420px;
+}
+.register-card{
+    max-width: 600px;
+}
+
+.login-body {
+    margin-top: 20px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.login-header p i {
+    font-size: 14px;
+    color: rgba(0,0,0,0.55);;
+}
+
+.login-icon {
+    width: 95px;
+    height: 95px;
+    background: #fff3e8;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -80px auto 15px;
+    box-shadow: 0 10px 25px rgba(255,122,0,0.12);
+}
+
+.login-icon i {
+    font-size: 58px;
+    color: #ff7a00;
+}
+
+.login-header h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.login-header p {
+    color: #ff7a00;
+    font-size: 16px;
+}
+
+.custom-input {
+    height: 56px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    background: #fff;
+    margin-bottom: 18px;
+}
+
+.custom-input .input-group-text {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff3e8;
+    border: none;
+    color: #ff7a00;
+    font-size: 20px;
+}
+
+/* input */
+.custom-input .form-control {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    font-size: 16px;
+    padding: 0 15px;
+}
+
+.custom-input .form-control::placeholder {
+    color: #999;
+}
+
+.login-btn {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 16px;
+    background: #ff7a00;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background: #eb6f00;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255,122,0,0.3);
+}
+
+
+/* register */
+.register {
+    text-align: center;
+    margin-top: 28px;
+    color: #777;
+    font-size: 15px;
+}
+
+.register a {
+    color: #ff7a00;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register a:hover {
+    color: #eb6f00;
+}
+
+.bottom-text{
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+    color: #666;
+}
+
+.bottom-text a{
+    color: #ff8c42;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.bottom-text a:hover{
+    text-decoration: underline;
+}
+
+/* error */
+.error {
+    background: #ffeaea;
+    color: #d62828;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+
+/* MY BOOKING */
+.mybooking-page {
+    background: #f7f7f7;
+}
+
+.booking-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booking-title{
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff7a00;
+  margin-bottom: 6px;
+}
+
+.booking-title i{
+  margin-right: 8px;
+}
+
+.booking-subtitle{
+  color: #777;
+  margin: 0;
+}
+
+
+.booking-content {
+    width: 100%;
+}
+
+.empty-reservasi,
+.table-responsive {
+    width: 100%;
+}
+
+.booking-wrapper{
+  background: white;
+  border-radius: 18px;
+  display: block !important;
+  display: flex;
+  flex-direction: row;
+  padding: 24px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+}
+
+.booking-content {
+    width: 100%;
+}
+
+.table-responsive,
+.empty-reservasi {
+    width: 100% !important;
+}
+
+.booking-topbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.booking-topbar h5{
+  font-weight: 700;
+  margin: 0;
+  color: #ff7a00;
+}
+
+.booking-table thead{
+  background: #fff3e8;
+}
+
+.booking-table thead th{
+  color: #ff7a00;
+  font-weight: 700;
+  border: none;
+}
+
+.booking-table tbody tr{
+  transition: 0.2s;
+}
+
+.booking-table tbody tr:hover{
+  background: #fff8f2;
+}
+
+.booking-table td{
+  vertical-align: middle;
+}
+
+.booking-status{
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pending-status{
+  background: #fff1df;
+  color: #ff7a00;
+}
+
+/* RESERVASI SAYA */
+.mybooking-page {
+    background: linear-gradient(240deg, #fff 25%, #fce9d7 100%);
+    min-height: 100vh;
+}
+
+.booking-header {
+    margin-bottom: 25px;
+}
+
+.booking-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booking-title i {
+    color: #ff7a00;
+    font-size: 28px;
+}
+
+.booking-subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.booking-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.booking-content {
+    width: 100%;
+}
+
+.booking-table {
+    background: #fff;
+    border-radius: 16px;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-spacing: 0 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.booking-table thead {
+    background: linear-gradient(135deg, #ff7a00, #ff9a3d);
+    color: #fff;
+    backdrop-filter: blur(10px);
+}
+
+.booking-table thead th {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #ff7a00;
+    text-transform: uppercase;
+}
+
+.booking-table th {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px;
+}
+
+.booking-table td {
+    padding: 14px;
+    font-size: 14px;
+    color: #333;
+}
+
+.booking-table tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.booking-table tbody tr:hover {
+    background: #fff7f0;
+    transition: 0.3s;
+}
+
+.booking-table td,
+.booking-table th {
+    white-space: nowrap;
+}
+
+.booking-table th:last-child,
+.booking-table td:last-child {
+    border-right: none;
+}
+
+.status-booking {
+    background: #ffc107;
+    color: #000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-done {
+    background: #28a745;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.empty-reservasi {
+    padding: 20px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+a.text-warning {
+    color: #ff7a00 !important;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+a.text-warning:hover {
+    color: #e96d00 !important;
+    transform: translateX(-3px);
+    text-decoration: none;
+}
+
+a.text-warning i {
+    transition: 0.3s;
+}
+
+a.text-warning:hover i {
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
     .navbar-expand-lg .navbar-collapse {
         display: none !important;
@@ -402,5 +907,15 @@ body {
       justify-content: center;
       width: 100%;
       margin-bottom: 10px;
+    }
+
+    .booking-title {
+        font-size: 22px;
+    }
+
+    .booking-table th,
+    .booking-table td {
+        font-size: 14px;
+        padding: 10px;
     }
 }
