@@ -7,49 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        body {
-            background: #f5f7fa;
-        }
-
-        .booking-container {
-            max-width: 900px;
-            margin: 60px auto;
-        }
-
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border: none;
-        }
-
-        .card-header {
-            background-color: #023b39;
-            color: white;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-            border-radius: 15px 15px 0 0;
-            padding: 15px;
-        }
-
-        .btn-primary {
-            background-color: #023b39;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #023b39;
-        }
-
-        label {
-            font-weight: 500;
-        }
-    </style>
 </head>
 
-<body>
     <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
@@ -117,17 +76,27 @@
                 <div class="mb-3">
                     <label>Pilih Kendaraan</label>
                     <select name="id_kendaraan" class="form-select" required>
-                        <option value="">-- Pilih Kendaraan --</option>
-                        <?php
-                        include 'koneksi.php';
+                <option value="">-- Pilih Kendaraan --</option>
 
-                        $query = mysqli_query($konek, "SELECT * FROM kendaraan");
-                        while($row = mysqli_fetch_assoc($query)) {
-                            echo "<option value='" . $row['id_kendaraan'] . "'>" . $row['jenis_kendaraan'] . "</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
+                <?php
+                include 'koneksi.php';
+
+                $query = mysqli_query($konek, "SELECT * FROM kendaraan");
+
+                if (!$query) {
+                    die("Query Error: " . mysqli_error($konek));
+                }
+
+            if (mysqli_num_rows($query) > 0) {
+                while($row = mysqli_fetch_assoc($query)) {
+                    echo "<option value='".$row['id_kendaraan']."'>".$row['jenis_kendaraan']."</option>";
+                }
+                } else {
+                    echo "<option value=''>Data tidak ada</option>";
+                }
+                ?>
+            </select>
+            </div>
 
                 <div class="mb-3">
                     <label>Tanggal Booking</label>
