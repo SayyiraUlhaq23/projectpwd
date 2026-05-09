@@ -96,7 +96,7 @@ session_start();
 
 <div class="right">
   <div class="hero-bg"></div>
-  <img src="assets/dashboardfix.png" alt="hero">
+  <img src="assets/hero-pict.png" alt="hero">
 </div>
 </div>
 </section>

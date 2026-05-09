@@ -45,11 +45,11 @@ $query = mysqli_query($konek, "SELECT booking.*,
             <i class="bi bi-house-door"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#daftar-kendaraan">
+            <a class="nav-link" href="index.php#daftar-kendaraan">
             <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">
+            <a class="nav-link" href="index.php#about">
             <i class="bi bi-info-circle"></i> About</a>
           </li>
 
@@ -75,9 +75,8 @@ $query = mysqli_query($konek, "SELECT booking.*,
           </li>
         <?php } else { ?>
             <li class="nav-item">
-              <a href="login_user.php" class="btn-login">
-                <i class="bi bi-person"></i> Login
-              </a>
+              <a class="nav-link nav-login" href="login_user.php">
+              <i class="bi bi-person"></i> Login</a>
             </li>
         <?php } ?>
         </ul>
@@ -146,9 +145,9 @@ $query = mysqli_query($konek, "SELECT booking.*,
     </div>
     <?php } else { ?>
         <div class="alert alert-warning text-center mt-3 empty-reservasi">
-          Belum ada reservasi
+          Belum ada data reservasi. Silahkan
+          <a href="form_booking.php">Booking Now!</a>
         </div>
-      
     <?php } ?>
   </div>
 </div>

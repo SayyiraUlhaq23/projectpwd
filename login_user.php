@@ -48,11 +48,11 @@ if (isset($_POST['login'])) {
             <i class="bi bi-house-door"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#daftar-kendaraan">
+            <a class="nav-link" href="index.php#daftar-kendaraan">
             <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#about">
+            <a class="nav-link" href="index.php#about">
             <i class="bi bi-info-circle"></i> About</a>
           </li>
 

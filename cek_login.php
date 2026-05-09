@@ -14,7 +14,7 @@ if($cek_admin > 0){
     $_SESSION['role'] = 'admin';
     $_SESSION['status'] = 'login';
 
-    header("location:dashboard_db.php");
+    header("location:dashboard.php");
     exit;
 }
 

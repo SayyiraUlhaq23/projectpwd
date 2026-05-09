@@ -26,7 +26,7 @@ if (!$data_kendaraan) {
 $total_harga = $data_kendaraan['harga_sewa'] * $lama_sewa;
 
 
-$query = mysqli_query($konek, "INSERT INTO booking (id_kendaraan, tanggal, lama_sewa, metode_pembayaran, id_user, total_harga, status)
+$query = mysqli_query($konek, "INSERT INTO booking (id_kendaraan, tanggal, lama_sewa, metode_pembayaran, id_user, total_harga)
     VALUES ('$id_kendaraan', '$tanggal', '$lama_sewa', '$metode_pembayaran', '$id_user', '$total_harga')");
 
 if ($query) {

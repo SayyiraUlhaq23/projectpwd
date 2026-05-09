@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.body {
+body {
     font-family: 'Segoe UI', sans-serif;
     margin: 0;
     display: flex;
@@ -412,6 +412,7 @@ main {
 
 /* footer */
 .footer {
+    margin-top: auto;
     text-align: center;
     padding: 20px;
     background: #fff;
@@ -847,8 +848,13 @@ main {
 .empty-reservasi {
     padding: 20px;
     border-radius: 12px;
-    background: #fff;
+    background: #f8f5d9;
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.empty-reservasi a {
+    color: #ff7a00;
+    font-weight: 500;
 }
 
 a.text-warning {

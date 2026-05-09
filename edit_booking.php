@@ -1,10 +1,23 @@
 <?php
+session_start();
 include 'koneksi.php';
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit;
+}
 
 $id_booking = $_GET['id_booking'];
 
-$query = mysqli_query($konek,"SELECT * FROM booking WHERE id_booking='$id_booking'");
+$query = mysqli_query($konek, "SELECT booking. *, users.nama, users.email, users.no_hp
+        FROM booking JOIN users ON booking.id_user = users.id_user
+        WHERE booking.id_booking = '$id_booking'");
+
 $data = mysqli_fetch_array($query);
+
+if (!$data) {
+    die("Data booking tidak ditemukan");
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +54,7 @@ $data = mysqli_fetch_array($query);
                 <option value="K002" <?= ($data['id_kendaraan']=='K002') ? 'selected' : ''; ?>>Vespa</option>
                 <option value="K003" <?= ($data['id_kendaraan']=='K003') ? 'selected' : ''; ?>>Sepeda</option>
             </select>
-        
+        <br>
 
         <label for="tanggal">Tanggal Booking</label>
         <input type="date" name="tanggal" id="tanggal"
@@ -49,8 +62,18 @@ $data = mysqli_fetch_array($query);
 
         <label for="lama_sewa">Lama Sewa</label>
         <input type="text" name="lama_sewa"
-        value="<?= $data['lama_sewa']; ?>"><br><br>
+        value="<?= $data['lama_sewa']; ?>"><br>
 
+        <label for="status">Status</label>
+        <select name="status" id="status">
+            <option value="booking">
+                <?= ($data['status'] == 'booking') ? 'selected' : ''; ?> Booking
+            </option>
+            <option value="done">
+                <?= ($data['status'] == 'done') ? 'selected' : ''; ?> Done
+            </option>
+        </select>
+        <br><br>
         <input type="submit" value="Update">
     </form>
 </body>

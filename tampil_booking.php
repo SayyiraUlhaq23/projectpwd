@@ -25,18 +25,22 @@
         <tr>
             <th>ID Booking</th>
             <th>Nama</th>
-            <th>Email</th>
+            <th>E-mail</th>
             <th>No Hp</th>
             <th>Jenis Kendaraan</th>
             <th>Tanggal Booking</th>
             <th>Lama Sewa</th>
             <th>Total</th>
+            <th>Status</th>
             <th colspan="2">Aksi</th>
         </tr>
 
     <?php
     include 'koneksi.php';
-    $query = mysqli_query($konek, "SELECT booking. *, kendaraan.jenis_kendaraan FROM booking JOIN kendaraan ON booking.id_kendaraan = kendaraan.id_kendaraan");
+    $query = mysqli_query($konek, "SELECT booking.*, kendaraan.jenis_kendaraan, users.nama, users.email, users.no_hp,
+             kendaraan.jenis_kendaraan, kendaraan.harga_sewa, (kendaraan.harga_sewa * booking.lama_sewa) AS total_harga
+             FROM booking JOIN users ON booking.id_user = users.id_user
+             JOIN kendaraan ON booking.id_kendaraan = kendaraan.id_kendaraan");
 
     while($data = mysqli_fetch_array($query)){
     ?>
@@ -48,10 +52,18 @@
         <td><?php echo $data['jenis_kendaraan']?></td>
         <td><?php echo date('d M Y', strtotime($data['tanggal'])); ?></td>
         <td><?php echo $data['lama_sewa'] . " hari"?></td>
+        <td> Rp <?= number_format($data['total_harga'], 0, ',', '.'); ?></td>
         <td>
-            <a href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">
+            <?php if($data['status'] == 'booking'){ ?>
+                <span class="status booking">Booking</span>
+            <?php } else { ?>
+                <span class="status success">Done</span>
+            <?php } ?>
+        </td>
+        <td>
+            <a class="btn edit" href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">
                 Edit</a> |
-                <a href="delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
+                <a class="btn hapus" href="delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
                 onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
     </tr>
     <?php } ?>
