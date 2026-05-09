@@ -248,7 +248,8 @@ if (!$data_user) {
                 </div>
                 <div class="mb-3">
                     <label>No. HP</label>
-                    <input type="text" name="no_hp" class="form-control booking-input" value="<?= $data_user['no_hp']; ?>">
+                    <input type="text" name="no_hp" class="form-control booking-input" placeholder="Masukkan No. Handphone" 
+                        value="<?= $data_user['no_hp']; ?>">
                 </div>
                 <div class="mb-3">
                     <label>Pilih Kendaraan</label>
@@ -270,7 +271,7 @@ if (!$data_user) {
                 </div>
                 <div class="mb-3">
                     <label>Lama Sewa (hari)</label>
-                    <input type="text" name="lama_sewa" class="form-control booking-input" min="1" required>
+                    <input type="text" name="lama_sewa" class="form-control booking-input" min="1" placeholder="Masukkan berapa lama sewa (angka)" required>
                 </div>
 
                 <div class="mb-3">

@@ -5,6 +5,7 @@ include "koneksi.php";
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    
 
     $query = mysqli_query($konek, "SELECT * FROM users WHERE (username='$username' OR email='$username') AND password='$password'");
 
@@ -103,6 +104,8 @@ if (isset($_POST['login'])) {
             <?php } ?>
 
             <form action="cek_login.php" method="POST">
+              <input type="hidden" name="role" value="user">
+              
                 <div class="input-group custom-input">
                     <span class="input-group-text">
                         <i class="bi bi-person"></i>

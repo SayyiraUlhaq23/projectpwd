@@ -1,5 +1,8 @@
 <?php
+include 'koneksi.php';
 session_start();
+
+$query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +105,7 @@ session_start();
 </section>
 
 <!-- Daftar Kendaraan -->
-<section id="daftar-kendaraan" class="py-5">
+<section id="daftar-kendaraan" class="py-5" kendaraan>
   <div class="container">
     <div class="section-header">
       <h2>Katalog Kendaraan Sewa</h2>
@@ -110,21 +113,28 @@ session_start();
     </div>
 
     <div class="row g-4">
-
-      <!-- Mobil VW -->
+      <?php while($data = mysqli_fetch_array($query_kendaraan)) { ?>
       <div class="col-md-4">
         <div class="card shadow text-center">
-          <img src="assets/mobilvw.png" class="card-img-top">
+          <img src="assets/<?= $data['gambar']; ?>" 
+            class="card-img-top">
           <div class="card-body">
-            <h5>VW (Mobil Wisata)</h5>
-            <p>Cocok untuk keluarga & rombongan</p>
-            <div class="btn btn-warning">Rp 500.000 / hari</div>
+            <h5>
+              <?= $data['jenis_kendaraan']; ?>
+            </h5>
+            <p>
+              <?= $data['deskripsi']; ?>
+            </p>
+            <div class="btn btn-warning">
+              Rp <?= number_format($data['harga_sewa'],0,',','.'); ?> / hari
+            </div>
           </div>
         </div>
+        <?php } ?>
       </div>
 
       <!-- Vespa -->
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <div class="card shadow text-center">
           <img src="assets/vespa.png" class="card-img-top">
           <div class="card-body">
@@ -135,7 +145,7 @@ session_start();
         </div>
       </div>
 
-      <!-- Sepeda -->
+      Sepeda
       <div class="col-md-4">
         <div class="card shadow text-center">
            <img src="assets/sepeda.jpeg" class="card-img-top">
@@ -148,7 +158,7 @@ session_start();
       </div>
 
     </div>
-  </div>
+  </div> -->
 </section>
 
 <!-- About -->
@@ -178,6 +188,7 @@ session_start();
     </div>
 </section>
 </main>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
 </body>
 <footer class="footer">
