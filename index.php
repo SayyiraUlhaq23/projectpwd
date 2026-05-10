@@ -105,8 +105,10 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 </section>
 
 <!-- Daftar Kendaraan -->
-<section id="daftar-kendaraan" class="py-5" kendaraan>
+<section id="daftar-kendaraan">
+<!-- <section id="daftar-kendaraan" class="py-5"> -->
   <div class="container">
+
     <div class="section-header">
       <h2>Katalog Kendaraan Sewa</h2>
       <p>Pilih kendaraan terbaik untuk menemani perjalananmu di Jogja</p>
@@ -115,24 +117,24 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
     <div class="row g-4">
       <?php while($data = mysqli_fetch_array($query_kendaraan)) { ?>
       <div class="col-md-4">
-        <div class="card shadow text-center">
+        <!-- <div class="card shadow text-center"> -->
+        <div class="card h-100 text-center">
           <img src="assets/<?= $data['gambar']; ?>" 
-            class="card-img-top">
-          <div class="card-body">
-            <h5>
-              <?= $data['jenis_kendaraan']; ?>
-            </h5>
-            <p>
-              <?= $data['deskripsi']; ?>
-            </p>
+            class="card-img-top" alt="<?= $data['jenis_kendaraan']; ?>">
+          
+            <div class="card-body">
+            <h5><?= $data['jenis_kendaraan']; ?></h5>
+            <p><?= $data['deskripsi']; ?></p>
             <div class="btn btn-warning">
               Rp <?= number_format($data['harga_sewa'],0,',','.'); ?> / hari
             </div>
           </div>
         </div>
+        </div>
         <?php } ?>
       </div>
-
+    </div>
+</section>
       <!-- Vespa -->
       <!-- <div class="col-md-4">
         <div class="card shadow text-center">
@@ -159,7 +161,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 
     </div>
   </div> -->
-</section>
+
 
 <!-- About -->
 <section id="about" class="about-section">

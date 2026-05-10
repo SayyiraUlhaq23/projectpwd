@@ -1,27 +1,37 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['username'])){
+    header("Location:login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking db</title>
+    <title>db Booking </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/styleAdmin.css">
 </head>
 
-<body>
-    <?php
-    
-    session_start();
+<body class="tampil-data">
+<div class="container container-box">
+    <div class="admin-info">
+        <i class="bi bi-shield-lock"></i>
+        <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
+    </div>
+    <div class="topbar">
+        <h1><i class="bi bi-journal-check"></i> Data Booking VelnoraJogja</h1>
+    </div>
 
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php");
-        exit;
-    }
-
-    echo "[!] Anda masuk sebagai <b>" . $_SESSION['username'] . "</b>.";
-    ?>
-    
-    <h1>Menampilkan Data Booking VelnoraJogja</h1>
     <!-- Tabel Data -->
-    <table border="1">
+    <div class="table-wrapper">
+    <table>
+        <thead>
         <tr>
             <th>ID Booking</th>
             <th>Nama</th>
@@ -34,7 +44,9 @@
             <th>Status</th>
             <th colspan="2">Aksi</th>
         </tr>
-
+        </thead>
+    
+    <tbody>
     <?php
     include 'koneksi.php';
     $query = mysqli_query($konek, "SELECT booking.*, kendaraan.jenis_kendaraan, users.nama, users.email, users.no_hp,
@@ -55,21 +67,25 @@
         <td> Rp <?= number_format($data['total_harga'], 0, ',', '.'); ?></td>
         <td>
             <?php if($data['status'] == 'booking'){ ?>
-                <span class="status booking">Booking</span>
+                <span class="status-booking">Booking</span>
             <?php } else { ?>
-                <span class="status success">Done</span>
+                <span class="status-done">Done</span>
             <?php } ?>
         </td>
         <td>
-            <a class="btn edit" href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">
-                Edit</a> |
-                <a class="btn hapus" href="delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
+            <a class="btn-action btn-edit" href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">Edit</a>
+            <a class="btn-action btn-delete" href="delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
                 onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
     </tr>
     <?php } ?>
+    </tbody>
     </table>
+    </div>
     <br>
-    <form action="dashboard.php" method="POST">
-        <input type="submit" value="Kembali">
-    </form>
+    <div class="bottom-bar">
+        <a href="dashboard.php" class="btn-back">← Kembali ke dashboard</a>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+</body>
 </html>

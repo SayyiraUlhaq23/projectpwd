@@ -124,8 +124,14 @@ body.dashboard-page{
     line-height: 1.4;
 }
 
+.sidebar p {
+    color:#cbd5e1; 
+    font-size:15px; 
+    margin-bottom:20px;
+}
+
 .sidebar h3{
-    font-size: 13px;
+    font-size: 18px;
     color: #94a3b8;
     margin-bottom: 15px;
 }
@@ -148,11 +154,11 @@ body.dashboard-page{
     color: #e2e8f0;
     text-decoration: none;
     border-radius: 10px;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.14);;
 }
 
 .menu li a:hover{
-    background: rgba(255,255,255,0.10);
+    background: rgba(255, 255, 255, 0.059);
 }
 
 .content{
@@ -232,8 +238,8 @@ body.dashboard-page{
     box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
 
-/* TAMPIL KENDARAAN */
-.tampil-kendaraan{
+/* TAMPIL DATA KENDARAAN, PENGGUNA, BOOKING */
+.tampil-data{
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -242,8 +248,11 @@ body.dashboard-page{
 
 .container-box{
     max-width: 1100px;
+    min-height: 88vh;
+    width: 100%;
     margin: 40px auto;
     padding: 30px;
+    overflow-x: auto;
 }
 
 .admin-info{
@@ -280,10 +289,6 @@ body.dashboard-page{
     font-weight: 700;
 }
 
-.container-box{
-    min-height: 88vh;
-}
-
 .btn-add{
     background: rgba(56, 189, 248, 0.15); /* soft blue */
     color: #7dd3fc;
@@ -295,31 +300,42 @@ body.dashboard-page{
     transition: 0.2s;
 }
 
+.table-wrapper{
+    width: 100%;
+    max-height: 65vh;  
+    overflow: auto;     
+    border-radius: 14px;
+    
+}
+
 table{
     width: 100%;
     border-collapse: collapse;
     border-radius: 14px;
+    margin-top: 15px;
+    min-width: 800px;
     overflow: hidden;
     background: rgba(255,255,255,0.05);
 }
-
 
 thead{
     background: rgba(255,255,255,0.08);
 }
 
 th, td{
-    padding: 14px;
+    padding: 16px 18px;
     text-align: left;
 }
 
 th{
     color: #cbd5e1;
     font-size: 16px;
+    white-space: nowrap; 
 }
 
 td{
     color: #e2e8f0;
+    white-space: nowrap; 
 }
 
 tbody{
@@ -383,3 +399,43 @@ tbody tr:hover{
     background: rgba(255,255,255,0.15);
 }
 
+.status{
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.status-booking{
+    background: rgba(245, 158, 11, 0.2);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-done{
+    background: rgba(34, 197, 94, 0.2);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+td:last-child{
+    white-space: nowrap;
+}
+
+@media (max-width: 768px){
+    td:last-child{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .btn-action{
+        width: 100%;
+        text-align: center;
+    }
+}

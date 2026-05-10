@@ -24,10 +24,8 @@ if(!isset($_SESSION['username'])){
         <h2>Selamat Datang, <br>
             <span><?php echo $_SESSION['username'];?>!</span>
         </h2>
-        <p style="color:#cbd5e1; font-size:13px; margin-bottom:20px;">
-            Admin Dashboard Sistem
-        </p>
-        <h3 style="font-size:14px; color:#94a3b8;">Menu</h3>
+        <p>Admin Dashboard Sistem</p>
+        <h3>Menu</h3>
         <ul class="menu">
             <li>
                 <a href="tampil_users.php">
@@ -47,7 +45,7 @@ if(!isset($_SESSION['username'])){
 
         <form action="logout.php" method="POST" class="logout-form">
             <button type="submit" class="logout-btn">
-                Logout
+                <i class="bi bi-box-arrow-left"></i>  Logout
             </button>
         </form>
     </div>

@@ -21,7 +21,7 @@ if(!isset($_SESSION['username'])){
     <link rel="stylesheet" href="css/styleAdmin.css">
 </head>
   
-<body class="tampil-kendaraan">
+<body class="tampil-data">
 <div class="container container-box">
     <div class="admin-info">
         <i class="bi bi-shield-lock"></i>
@@ -36,6 +36,7 @@ if(!isset($_SESSION['username'])){
     </div>
 
     <!-- Tabel Data -->
+     <div class="table-wrapper">
     <table>
         <thead>
         <tr>
@@ -67,6 +68,7 @@ if(!isset($_SESSION['username'])){
         <?php } ?>
         </tbody>
     </table>
+    </div>
     <br>
     <div class="bottom-bar">
     <a href="dashboard.php" class="btn-back">

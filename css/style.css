@@ -211,9 +211,9 @@ main {
 }
 
 .btn-dk {
-    background: transparent;
-    border: 1.5px solid #ff7a00;
-    color: #ff7a00;
+    background: transparent !important;
+    border: 1.5px solid #ff7a00 !important;
+    color: #ff7a00 !important;
     border-radius: 999px;
     padding: 10px 22px;
     font-weight: 500;
@@ -225,9 +225,9 @@ main {
 .btn-dk:hover,
 .btn-dk:focus,
 .btn-dk:active {
-    background: rgba(255,122,0,0.08);
-    color: #ff7a00;
-    border-color: #ff7a00;
+    background: rgba(255,122,0,0.08) !important;
+    color: #ff7a00 !important;
+    border-color: #ff7a00 !important;
     box-shadow: none;
     outline: none;
     transform: translateY(-2px);
@@ -238,28 +238,24 @@ main {
 }
 
 .btn-booking {
-    background: #ff7a00;
+    background: #ff7a00 !important;
     border: none;
-    color: #fff;
+    color: #fff !important;
     font-weight: 500;
     border-radius: 999px;
     padding: 10px 22px;
 }
 
 .btn-booking:hover {
-    background: #e96d00;
+    background: #e96d00 !important;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255,122,0,0.4);
 }
 
-/* daftar kendaraan */
+/* DAFTAR KENDARAAN */
 #daftar-kendaraan {
-    background: #fff;
-    padding: 80px 0;
-}
-
-.kendaraan{
-    margin-top: 100px;
+    padding: 90px 0;
+    background: linear-gradient(to bottom, #fffbf8, #ffffff);
 }
 
 .section-header {
@@ -267,53 +263,50 @@ main {
     margin-bottom: 50px;
 }
 
-.section-header h2 {
-    font-size: 32px;
+.section-header h2{
+    font-size: 36px;
     font-weight: 700;
+    margin-bottom: 15px;
     position: relative;
-    display: inline-block;
-    margin-bottom: 12px;
 }
 
 .section-header h2::after {
     content: "";
-    width: 60px;
-    height: 4px;
-    background: #ff7a00;
+    width: 70px;
+    height: 3px;
+    background: #ffc107;
     display: block;
-    margin: 10px auto 0;
-    border-radius: 5px;
+    margin: 12px auto 0;
 }
 
 .section-header p {
-    color: #777;
-    font-size: 15px;
-    margin-top: 10px;
+    color: #64748b;
+    font-size: 16px;
 }
 
 #daftar-kendaraan .card {
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+    border: none;
+    border-radius: 24px;
+    height: 100%;
     overflow: hidden;
     background: #fff;
-    height: 100%;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    transition: 0.3s;
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 #daftar-kendaraan .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 18px 40px rgba(249, 115, 22, 0.18);
 }
 
-
 #daftar-kendaraan .card-img-top {
-    width: 100%;
-    height: 210px;
+    width: 90%;
+    height: 220px;
     object-fit: contain;
-    padding: 20px;
-    transition: 0.3s;
+    margin: 20px auto 0;
+    display: block;
+    border-radius: 18px;
+    transition: transform 0.4s ease;
 }
 
 #daftar-kendaraan .card:hover .card-img-top {
@@ -321,60 +314,48 @@ main {
 }
 
 #daftar-kendaraan .card-body {
-    flex: 1;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    background: #f8f9fa;
-    min-height: 180px;
+
+    background: linear-gradient(
+        to bottom,
+        #fffaf5,
+        #fff3e8
+    );
+
+    border-top: 1px solid #ffe4cc;
 }
 
 #daftar-kendaraan .card-body h5 {
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 12px;
+    text-align: center;
 }
 
 #daftar-kendaraan .card-body p {
-    font-size: 14px;
-    color: #777;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    flex-grow: 1;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-#daftar-kendaraan .btn-warning{
-    background: #ff7a00;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    font-weight: 600;
-    padding: 12px;
+#daftar-kendaraan .btn-warning {
     width: 100%;
-    transition: 0.3s;
-}
-
-#daftar-kendaraan .btn-warning:hover{
-    background: #e56d00;
-}
-/* 
-.card .btn {
-    margin-top: auto;
-    border-radius: 25px;
-    font-weight: 600;
-    padding: 10px;
-}
-
-.card .btn-warning {
-    background: #ff7a00;
-    color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 14px;
+    padding: 12px;
+    background: linear-gradient(135deg, #f97316, #fb923c);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.25);
 }
 
-.kendaraan {
-    margin-top: 100px;
-} */
-
-/* About */
+/* ABOUT */
 .about-section {
     padding: 80px 0;
     background: #fff6ed;
