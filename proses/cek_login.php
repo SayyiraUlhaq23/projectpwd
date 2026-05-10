@@ -17,7 +17,7 @@ if($role == "admin"){
         $_SESSION['username'] = $username;
         $_SESSION['role'] = 'admin';
         $_SESSION['status'] = 'login';
-        header("Location: dashboard.php");
+        header("Location: ../admin/dashboard.php");
         exit;
     } else {
         header("Location: login_db.php?pesan=gagal");
@@ -41,7 +41,7 @@ if($role == "admin"){
         $_SESSION['role'] = 'user';
         $_SESSION['status'] = 'login';
 
-        header("Location:index.php");
+        header("Location: ../user/index.php");
         exit;
     } else {
         header("Location: login_user.php?pesan=gagal");

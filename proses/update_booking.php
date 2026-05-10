@@ -20,7 +20,7 @@ $query = mysqli_query($konek,"UPDATE booking SET
         WHERE id_booking='$id_booking'");
 
 if($query){
-    header("Location:tampil_booking.php");
+    header("Location:../admin/tampil_booking.php");
 } else {
     echo "Gagal update data!";
 }

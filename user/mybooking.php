@@ -1,9 +1,9 @@
 <?php
 session_start();
-include 'koneksi.php';
+include '../proses/koneksi.php';
 
 if (!isset($_SESSION['id_user']) || $_SESSION['status'] != 'login') {
-    header("Location: login_user.php");
+    header("Location:../proses/login_user.php");
     exit;
 }
 
@@ -24,7 +24,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
     <title>Reservasi Saya</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body class="mybooking-page">
@@ -67,7 +67,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
                 </a>
               </li>
               <li>
-                <a class="dropdown-item dropdown-menu-custom text-danger" href="logout.php">
+                <a class="dropdown-item dropdown-menu-custom text-danger" href="../proses/logout.php">
                   <i class="bi bi-box-arrow-in-right"></i> Logout
                 </a>
               </li>
@@ -75,7 +75,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
           </li>
         <?php } else { ?>
             <li class="nav-item">
-              <a class="nav-link nav-login" href="login_user.php">
+              <a class="nav-link nav-login" href="../proses/login_user.php">
               <i class="bi bi-person"></i> Login</a>
             </li>
         <?php } ?>
@@ -146,7 +146,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
     <?php } else { ?>
         <div class="alert alert-warning text-center mt-3 empty-reservasi">
           Belum ada data reservasi. Silahkan
-          <a href="form_booking.php">Booking Now!</a>
+          <a href="../form_booking.php">Booking Now!</a>
         </div>
     <?php } ?>
   </div>
@@ -157,7 +157,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
 <footer class="footer">
   <div class="footer-content">
   © 2026 Velnora Jogja
-  <a href="login_db.php" class="admin-link">
+  <a href="../proses/login_db.php" class="admin-link">
     - Admin
   </a>
   </div>

@@ -4,7 +4,7 @@ session_start();
 
 // cek login
 if (!isset($_SESSION['id_user'])) {
-    header("Location: login.php");
+    header("Location: login_user.php");
     exit;
 }
 
@@ -30,7 +30,7 @@ $query = mysqli_query($konek, "INSERT INTO booking (id_kendaraan, tanggal, lama_
     VALUES ('$id_kendaraan', '$tanggal', '$lama_sewa', '$metode_pembayaran', '$id_user', '$total_harga')");
 
 if ($query) {
-    header("Location: mybooking.php");
+    header("Location:../user/mybooking.php");
     exit;
 
 } else {

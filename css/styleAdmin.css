@@ -58,7 +58,7 @@ body.login-page{
     color: #334155;
 }
 
-.admin-input{
+.login-input{
     width: 100%;
     height: 50px;
     border: 1px solid #cbd5e1;
@@ -68,7 +68,7 @@ body.login-page{
     font-size: 15px;
 }
 
-.admin-input:focus{
+.login-input:focus{
     border-color: #1e3a8a;
 }
 
@@ -247,7 +247,7 @@ body.dashboard-page{
 }
 
 .container-box{
-    max-width: 1100px;
+    max-width: 1000px;
     min-height: 88vh;
     width: 100%;
     margin: 40px auto;
@@ -427,6 +427,87 @@ td:last-child{
     white-space: nowrap;
 }
 
+/* FORM EDIT */
+.form-card{
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+}
+
+.form-group-admin{
+    margin-bottom: 22px;
+}
+
+.form-group-admin label{
+    display: block;
+    margin-bottom: 9px;
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-input{
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    outline: none;
+    transition: 0.2s;
+}
+
+.admin-input option{
+    background: #0f172a;
+    color: white;
+}
+
+.admin-input:focus{
+    border-color: #38bdf8;
+    background: rgba(255,255,255,0.08);
+}
+
+.admin-input[readonly]{
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-action{
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.form-action-right{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-save{
+    background: rgba(56, 189, 248, 0.18);
+    color: #cbe5f3;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+    border: 1px solid rgba(125, 211, 252, 0.35);
+
+    font-weight: 600;
+    font-size: 14px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-save:hover{
+    background: rgba(56, 189, 248, 0.28);
+}
+
 @media (max-width: 768px){
     td:last-child{
         display: flex;
@@ -435,6 +516,20 @@ td:last-child{
     }
 
     .btn-action{
+        width: 100%;
+        text-align: center;
+    }
+
+        .form-card{
+        padding: 20px;
+    }
+
+    .form-action{
+        flex-direction: column;
+    }
+
+    .btn-save,
+    .btn-back{
         width: 100%;
         text-align: center;
     }

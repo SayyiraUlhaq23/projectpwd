@@ -9,7 +9,7 @@ $query = mysqli_query($konek,"INSERT INTO kendaraan(id_kendaraan,jenis_kendaraan
 VALUES('$id_kendaraan','$jenis_kendaraan','$harga_sewa')");
 
 if($query){
-    header("Location:tampil_kendaraan.php");
+    header("Location:../admin/tampil_kendaraan.php");
 }else{
     echo "Gagal Menyimpan Data";
 }

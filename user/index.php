@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../proses/koneksi.php';
 session_start();
 
 $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
@@ -13,7 +13,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body class="home-page">
@@ -57,7 +57,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
                 </a>
               </li>
               <li>
-                <a class="dropdown-item dropdown-menu-custom text-danger" href="logout.php">
+                <a class="dropdown-item dropdown-menu-custom text-danger" href="../proses/logout.php">
                   <i class="bi bi-box-arrow-in-right"></i> Logout
                 </a>
               </li>
@@ -65,7 +65,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
           </li>
         <?php } else { ?>
             <li class="nav-item">
-              <a class="nav-link nav-login" href="login_user.php">
+              <a class="nav-link nav-login" href="../proses/login_user.php">
               <i class="bi bi-person"></i> Login</a>
             </li>
         <?php } ?>
@@ -86,11 +86,11 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
       Lihat Katalog
       </a>
     <?php if(isset($_SESSION['status'])) { ?>
-      <a href="form_booking.php" class="btn btn-primary btn-booking">Booking Now!
+      <a href="../form_booking.php" class="btn btn-primary btn-booking">Booking Now!
         <i class="bi bi-arrow-up-right ms-2"></i>
       </a>
     <?php } else { ?>
-      <a href="login_user.php" class="btn btn-primary btn-booking">
+      <a href="../proses/login_user.php" class="btn btn-primary btn-booking">
         Booking Now!
         <i class="bi bi-arrow-up-right ms-2"></i>
       </a>
@@ -99,7 +99,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 
 <div class="right">
   <div class="hero-bg"></div>
-  <img src="assets/hero-pict.png" alt="hero">
+  <img src="../assets/hero-pict.png" alt="hero">
 </div>
 </div>
 </section>
@@ -119,7 +119,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
       <div class="col-md-4">
         <!-- <div class="card shadow text-center"> -->
         <div class="card h-100 text-center">
-          <img src="assets/<?= $data['gambar']; ?>" 
+          <img src="../assets/<?= $data['gambar']; ?>" 
             class="card-img-top" alt="<?= $data['jenis_kendaraan']; ?>">
           
             <div class="card-body">
@@ -197,7 +197,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
   <div class="footer-content">
   © 2026 Velnora Jogja
 
-  <a href="login_db.php" class="admin-link">
+  <a href="../proses/login_db.php" class="admin-link">
     - Admin
   </a>
   </div>

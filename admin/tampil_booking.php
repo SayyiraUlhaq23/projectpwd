@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['username'])){
-    header("Location:login.php");
+    header("Location:../proses/login_db.php");
     exit;
 }
 ?>
@@ -15,7 +15,7 @@ if(!isset($_SESSION['username'])){
     <title>db Booking </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/styleAdmin.css">
+    <link rel="stylesheet" href="../css/styleAdmin.css">
 </head>
 
 <body class="tampil-data">
@@ -48,7 +48,7 @@ if(!isset($_SESSION['username'])){
     
     <tbody>
     <?php
-    include 'koneksi.php';
+    include '../proses/koneksi.php';
     $query = mysqli_query($konek, "SELECT booking.*, kendaraan.jenis_kendaraan, users.nama, users.email, users.no_hp,
              kendaraan.jenis_kendaraan, kendaraan.harga_sewa, (kendaraan.harga_sewa * booking.lama_sewa) AS total_harga
              FROM booking JOIN users ON booking.id_user = users.id_user
@@ -74,7 +74,7 @@ if(!isset($_SESSION['username'])){
         </td>
         <td>
             <a class="btn-action btn-edit" href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">Edit</a>
-            <a class="btn-action btn-delete" href="delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
+            <a class="btn-action btn-delete" href="../proses/delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
                 onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
     </tr>
     <?php } ?>

@@ -1,9 +1,9 @@
 <?php
 session_start();
-include 'koneksi.php';
+include 'proses/koneksi.php';
 
 if (!isset($_SESSION['id_user'])) {
-    header("Location: login.php");
+    header("Location: proses/login_user.php");
     exit;
 }
 
@@ -173,7 +173,7 @@ if (!$data_user) {
     <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand" href="user/index.php">
       <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
       VelnoraJogja
     </a>
@@ -184,15 +184,15 @@ if (!$data_user) {
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav align-items-lg-center">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="user/index.php">
             <i class="bi bi-house-door"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php#daftar-kendaraan">
+            <a class="nav-link" href="user/index.php#daftar-kendaraan">
             <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php#about">
+            <a class="nav-link" href="user/index.php#about">
             <i class="bi bi-info-circle"></i> About</a>
           </li>
 
@@ -205,12 +205,12 @@ if (!$data_user) {
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
-                <a class="dropdown-item dropdown-menu-custom" href="mybooking.php">
+                <a class="dropdown-item dropdown-menu-custom" href="user/mybooking.php">
                   <i class="bi bi-journal-text"></i> Reservasi Saya
                 </a>
               </li>
               <li>
-                <a class="dropdown-item dropdown-menu-custom text-danger" href="logout.php">
+                <a class="dropdown-item dropdown-menu-custom text-danger" href="proses/logout.php">
                   <i class="bi bi-box-arrow-in-right"></i> Logout
                 </a>
               </li>
@@ -218,7 +218,7 @@ if (!$data_user) {
           </li>
         <?php } else { ?>
             <li class="nav-item">
-              <a class="nav-link nav-login" href="login_user.php">
+              <a class="nav-link nav-login" href="proses/login_user.php">
               <i class="bi bi-person"></i> Login</a>
             </li>
         <?php } ?>
@@ -237,7 +237,7 @@ if (!$data_user) {
             <p><i>Lengkapi data booking kendaraan wisata Anda.</i></p>
         </div>
         <div class="card-body">
-            <form action="input_booking.php" method="POST">
+            <form action="proses/input_booking.php" method="POST">
                 <div class="mb-3">
                     <label>Nama</label>
                     <input type="text" class="form-control booking-input" value="<?= $data_user['nama']; ?>" readonly>
@@ -256,7 +256,7 @@ if (!$data_user) {
                     <select name="id_kendaraan" class="form-select" required>
                         <option value="">-- Pilih Kendaraan --</option>
                         <?php
-                        include 'koneksi.php';
+                        include 'proses/koneksi.php';
 
                         $query = mysqli_query($konek, "SELECT * FROM kendaraan");
                         while($row = mysqli_fetch_assoc($query)) {
@@ -296,7 +296,7 @@ if (!$data_user) {
 <footer class="footer">
   <div class="footer-content">
   © 2026 Velnora Jogja
-  <a href="login_db.php" class="admin-link">
+  <a href="proses/login_db.php" class="admin-link">
     - Admin
   </a>
   </div>

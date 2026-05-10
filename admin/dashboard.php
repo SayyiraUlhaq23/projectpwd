@@ -2,7 +2,7 @@
 session_start();
 
 if(!isset($_SESSION['username'])){
-    header("Location:login.php");
+    header("Location:../proses/login_db.php");
     exit;
 }
 ?>
@@ -15,7 +15,7 @@ if(!isset($_SESSION['username'])){
     <title>Dashboard db</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/styleAdmin.css">
+    <link rel="stylesheet" href="../css/styleAdmin.css">
 </head>
 
 <body class="dashboard-page">
@@ -43,7 +43,7 @@ if(!isset($_SESSION['username'])){
                 </a></li>
         </ul>    
 
-        <form action="logout.php" method="POST" class="logout-form">
+        <form action="../proses/logout.php" method="POST" class="logout-form">
             <button type="submit" class="logout-btn">
                 <i class="bi bi-box-arrow-left"></i>  Logout
             </button>

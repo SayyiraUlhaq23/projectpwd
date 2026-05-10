@@ -6,7 +6,7 @@
     <title>Login db</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/styleAdmin.css">
+    <link rel="stylesheet" href="../css/styleAdmin.css">
 </head>
 
 <body class="login-page">
@@ -34,11 +34,11 @@
 
     <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" name="username" class="admin-input" placeholder="Username" required><br>
+        <input type="text" name="username" class="login-input" placeholder="Username" required><br>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" name="password" class="admin-input" placeholder="Password" required><br>
+        <input type="password" name="password" class="login-input" placeholder="Password" required><br>
     </div>
     <button type="submit" class="admin-btn">
         Login

@@ -11,7 +11,7 @@ $password = $_POST['password'];
 $query = mysqli_query($konek,"UPDATE users SET nama='$nama', email='$email', no_hp='$no_hp', username='$username', password='$password' WHERE id_user='$id_user'");
 
 if($query){
-    header("Location:tampil_users.php");
+    header("Location:../admin/tampil_users.php");
 } else {
     echo "Gagal update data!";
 }
