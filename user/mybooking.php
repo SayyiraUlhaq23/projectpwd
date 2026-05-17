@@ -115,6 +115,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
           <th>Pembayaran</th>
           <th>Total</th>
           <th>Status</th>
+          <th>Pembayaran</th>
         </tr>
         </thead>
 
@@ -132,12 +133,28 @@ $query = mysqli_query($konek, "SELECT booking.*,
           <td><?= $data['metode_pembayaran']; ?></td>
           <td>Rp <?= number_format($data['total_harga']); ?></td>
           <td>
-            <?php if ($data['status'] == 'done') { ?>
-                <span class="status-done">Done</span>
-            <?php } else { ?>
-                <span class="status-booking">Booking</span>
-            <?php } ?>
-            </td>
+          <?php if ($data['status'] == 'done') { ?>
+              <span class="status-done">Done</span>
+          <?php } else { ?>
+              <span class="status-booking">Booking</span>
+          <?php } ?>
+          </td>
+          
+          <td>
+          <?php if ($data['status_pembayaran'] == 'Lunas') { ?>
+              <span class="payment-lunas">
+                Lunas
+              </span>
+          <?php } elseif ($data['status_pembayaran'] == 'Menunggu Pembayaran') { ?>
+              <span class="payment-menunggu">
+                Menunggu
+              </span>
+          <?php } else { ?>
+              <span class="payment-gagal">
+                Gagal
+              </span>
+          <?php } ?>
+          </td>
         </tr>
         <?php } ?>
         </tbody>

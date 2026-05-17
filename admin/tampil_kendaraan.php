@@ -7,9 +7,6 @@ if(!isset($_SESSION['username'])){
 }
 ?>
 
-<!-- // echo "[!] Anda masuk sebagai <b>" . $_SESSION['username'] . "<b>."; -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

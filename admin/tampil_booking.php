@@ -41,43 +41,90 @@ if(!isset($_SESSION['username'])){
             <th>Tanggal Booking</th>
             <th>Lama Sewa</th>
             <th>Total</th>
-            <th>Status</th>
-            <th colspan="2">Aksi</th>
+            <th>Status Booking</th>
+            <th>Status Pembayaran</th>
+            <th>Aksi</th>
         </tr>
         </thead>
     
     <tbody>
-    <?php
-    include '../proses/koneksi.php';
-    $query = mysqli_query($konek, "SELECT booking.*, kendaraan.jenis_kendaraan, users.nama, users.email, users.no_hp,
-             kendaraan.jenis_kendaraan, kendaraan.harga_sewa, (kendaraan.harga_sewa * booking.lama_sewa) AS total_harga
-             FROM booking JOIN users ON booking.id_user = users.id_user
-             JOIN kendaraan ON booking.id_kendaraan = kendaraan.id_kendaraan");
+        <?php
+        include '../proses/koneksi.php';
 
-    while($data = mysqli_fetch_array($query)){
-    ?>
-    <tr>
-        <td><?php echo $data['id_booking']?></td>
-        <td><?php echo $data['nama']?></td>
-        <td><?php echo $data['email']?></td>
-        <td><?php echo $data['no_hp']?></td>
-        <td><?php echo $data['jenis_kendaraan']?></td>
-        <td><?php echo date('d M Y', strtotime($data['tanggal'])); ?></td>
-        <td><?php echo $data['lama_sewa'] . " hari"?></td>
-        <td> Rp <?= number_format($data['total_harga'], 0, ',', '.'); ?></td>
-        <td>
-            <?php if($data['status'] == 'booking'){ ?>
-                <span class="status-booking">Booking</span>
-            <?php } else { ?>
-                <span class="status-done">Done</span>
-            <?php } ?>
-        </td>
-        <td>
-            <a class="btn-action btn-edit" href="edit_booking.php?id_booking=<?php echo $data['id_booking']; ?>">Edit</a>
-            <a class="btn-action btn-delete" href="../proses/delete_booking.php?id_booking=<?php echo $data['id_booking']; ?>" 
-                onclick="return confirm('Yakin ingin menghapus data?')">Hapus</a>
-    </tr>
-    <?php } ?>
+        $query = mysqli_query($konek, "SELECT booking.*, 
+                kendaraan.jenis_kendaraan, 
+                users.nama, 
+                users.email, 
+                users.no_hp,
+                kendaraan.harga_sewa,
+                (kendaraan.harga_sewa * booking.lama_sewa) AS total_harga
+                FROM booking 
+                JOIN users ON booking.id_user = users.id_user
+                JOIN kendaraan ON booking.id_kendaraan = kendaraan.id_kendaraan
+                ORDER BY booking.id_booking DESC");
+
+        while($data = mysqli_fetch_array($query)){
+        ?>
+        <tr>
+
+            <td><?= $data['id_booking']; ?></td>
+            <td><?= $data['nama']; ?></td>
+            <td><?= $data['email']; ?></td>
+            <td><?= $data['no_hp']; ?></td>
+            <td><?= $data['jenis_kendaraan']; ?></td>
+            <td>
+                <?= date('d M Y', strtotime($data['tanggal'])); ?>
+            </td>
+            <td>
+                <?= $data['lama_sewa']; ?> Hari
+            </td>
+            <td>
+                Rp <?= number_format($data['total_harga'],0,',','.'); ?>
+            </td>
+            <!-- STATUS BOOKING -->
+            <td>
+                <?php if($data['status'] == 'done'){ ?>
+                    <span class="status-done">
+                        Done
+                    </span>
+
+                <?php } else { ?>
+                    <span class="status-booking">
+                        Booking
+                    </span>
+                <?php } ?>
+            </td>
+            <!-- STATUS PEMBAYARAN -->
+            <td>
+                <?php if($data['status_pembayaran'] == 'Lunas'){ ?>
+                    <span class="payment-lunas">
+                        Lunas
+                    </span>
+                <?php } elseif($data['status_pembayaran'] == 'Menunggu Pembayaran'){ ?>
+                    <span class="payment-menunggu">
+                        Menunggu
+                    </span>
+                <?php } else { ?>
+                    <span class="payment-gagal">
+                        Gagal
+                    </span>
+                <?php } ?>
+            </td>
+
+            <!-- AKSI -->
+            <td class="action-column">
+                <a class="btn-action btn-edit"
+                   href="edit_booking.php?id_booking=<?= $data['id_booking']; ?>">
+                   Edit
+                </a>
+                <a class="btn-action btn-delete"
+                   href="../proses/delete_booking.php?id_booking=<?= $data['id_booking']; ?>"
+                   onclick="return confirm('Yakin ingin menghapus data?')">
+                   Hapus
+                </a>
+            </td>
+        </tr>
+        <?php } ?>
     </tbody>
     </table>
     </div>

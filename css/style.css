@@ -851,6 +851,33 @@ main {
     font-weight: 600;
 }
 
+.payment-lunas{
+    background: #d1fae5;
+    color: #065f46;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.payment-menunggu{
+    background: #fff3cd;
+    color: #856404;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.payment-gagal{
+    background: #fde2e2;
+    color: #b91c1c;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
 .empty-reservasi {
     padding: 20px;
     border-radius: 12px;

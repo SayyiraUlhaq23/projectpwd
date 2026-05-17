@@ -384,13 +384,10 @@ tbody tr:hover{
     display: inline-block;
     padding: 10px 14px;
     border-radius: 10px;
-
     background: rgba(255,255,255,0.08);
     color: #e2e8f0;
-
     text-decoration: none;
     font-size: 14px;
-
     border: 1px solid rgba(255,255,255,0.12);
     transition: 0.2s;
 }
@@ -491,21 +488,47 @@ td:last-child{
 .btn-save{
     background: rgba(56, 189, 248, 0.18);
     color: #cbe5f3;
-
     padding: 10px 16px;
-
     border-radius: 10px;
     border: 1px solid rgba(125, 211, 252, 0.35);
-
     font-weight: 600;
     font-size: 14px;
-
     cursor: pointer;
     transition: 0.2s;
 }
 
 .btn-save:hover{
     background: rgba(56, 189, 248, 0.28);
+}
+
+.payment-menunggu{
+    background: rgba(255, 193, 7, 0.18);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 193, 7, 0.35);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.payment-lunas{
+    background: rgba(16, 185, 129, 0.20);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.payment-gagal{
+    background: rgba(239, 68, 68, 0.20);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    font-size: 13px;
+    font-weight: 500;
 }
 
 @media (max-width: 768px){

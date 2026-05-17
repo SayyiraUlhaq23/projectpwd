@@ -282,6 +282,10 @@ if (!$data_user) {
                         <option value="Transfer">Transfer</option>
                         <option value="E-Wallet">E-Wallet</option>
                     </select>
+                    <small style="color:#777;">
+                        <i class="bi bi-shield-check"></i>
+                        Invoice dan instruksi pembayaran akan ditampilkan setelah booking berhasil.
+                    </small>
                 </div>
 
                 <button type="submit" class="booking-btn">

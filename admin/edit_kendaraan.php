@@ -59,7 +59,7 @@ if(!isset($_SESSION['username'])){
         </form>
     </div>
     <div class="form-action">
-        <a href="tampil_booking.php" class="btn-back">
+        <a href="tampil_kendaraan.php" class="btn-back">
             ← Kembali ke beranda
         </a>
     </div>

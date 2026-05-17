@@ -38,7 +38,7 @@ if (!$data) {
         <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
     </div>
     <div class="topbar">
-        <h1><i class="bi bi-pencil-square"></i> Update Data Booking Sewa</h1>
+        <h1><i class="bi bi-pencil-square"></i> Update Data Booking Kendaraan</h1>
     </div>
     
     <div class="form-card">
@@ -69,11 +69,17 @@ if (!$data) {
 
         <div class="form-group-admin">
             <label class="label">Pilih Jenis Kendaraan</label>
-                <select name="id_kendaraan" id="id_kendaraan" class="admin-input" required>
-                    <option value="K001" <?= ($data['id_kendaraan']=='K001') ? 'selected' : ''; ?>>VW</option>
-                    <option value="K002" <?= ($data['id_kendaraan']=='K002') ? 'selected' : ''; ?>>Vespa</option>
-                    <option value="K003" <?= ($data['id_kendaraan']=='K003') ? 'selected' : ''; ?>>Sepeda</option>
-                </select>
+            <select name="id_kendaraan" id="id_kendaraan" class="admin-input" required>
+                <?php
+                $kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
+                while($k = mysqli_fetch_array($kendaraan)){
+                ?>
+                <option value="<?= $k['id_kendaraan']; ?>"
+                    <?= ($data['id_kendaraan'] == $k['id_kendaraan']) ? 'selected' : ''; ?>>
+                    <?= $k['jenis_kendaraan']; ?>
+                </option>
+                <?php } ?>
+            </select>
         </div>
 
         <div class="form-group-admin">
@@ -99,6 +105,26 @@ if (!$data) {
                 </option>
             </select>
         </div>
+
+        <div class="form-group-admin">
+            <label for="status_pembayaran">Status Pembayaran</label>
+            <select name="status_pembayaran" id="status_pembayaran" class="admin-input" required>
+                <option value="Menunggu Pembayaran"
+                    <?= ($data['status_pembayaran'] == 'Menunggu Pembayaran') ? 'selected' : ''; ?>>
+                    Menunggu Pembayaran
+                </option>
+                <option value="Lunas"
+                    <?= ($data['status_pembayaran'] == 'Lunas') ? 'selected' : ''; ?>>
+                    Lunas
+                </option>
+                <option value="Gagal"
+                    <?= ($data['status_pembayaran'] == 'Gagal') ? 'selected' : ''; ?>>
+                    Gagal
+                </option>
+
+            </select>
+        </div>
+
         <div class="form-action form-action-right">
             <button type="submit" class="btn-save">
                 <i class="bi bi-repeat"></i> Update Data

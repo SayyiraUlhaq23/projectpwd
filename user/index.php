@@ -106,7 +106,6 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 
 <!-- Daftar Kendaraan -->
 <section id="daftar-kendaraan">
-<!-- <section id="daftar-kendaraan" class="py-5"> -->
   <div class="container">
 
     <div class="section-header">
@@ -117,7 +116,6 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
     <div class="row g-4">
       <?php while($data = mysqli_fetch_array($query_kendaraan)) { ?>
       <div class="col-md-4">
-        <!-- <div class="card shadow text-center"> -->
         <div class="card h-100 text-center">
           <img src="../assets/<?= $data['gambar']; ?>" 
             class="card-img-top" alt="<?= $data['jenis_kendaraan']; ?>">
@@ -135,33 +133,6 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
       </div>
     </div>
 </section>
-      <!-- Vespa -->
-      <!-- <div class="col-md-4">
-        <div class="card shadow text-center">
-          <img src="assets/vespa.png" class="card-img-top">
-          <div class="card-body">
-            <h5>Vespa</h5>
-            <p>Stylish untuk jalan santai di Jogja</p>
-            <div class="btn btn-warning">Rp 200.000 / hari</div>
-          </div>
-        </div>
-      </div>
-
-      Sepeda
-      <div class="col-md-4">
-        <div class="card shadow text-center">
-           <img src="assets/sepeda.jpeg" class="card-img-top">
-        <div class="card-body">
-          <h5>Sepeda</h5>
-          <p>Santai keliling wisata Jogja</p>
-          <div class="btn btn-warning">Rp 30.000 / hari</div>
-        </div>
-        </div>
-      </div>
-
-    </div>
-  </div> -->
-
 
 <!-- About -->
 <section id="about" class="about-section">
