@@ -38,8 +38,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <thead>
         <tr>
             <th>ID Kendaraan</th>
+            <th>Gambar</th>
             <th>Jenis Kendaraan</th>
             <th>Harga Sewa (per hari)</th>
+             <th>Deskripsi</th>
             <th colspan="2">Aksi</th>
         </tr>
         </thead>
@@ -53,8 +55,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         ?>
         <tr>
             <td><?php echo $data['id_kendaraan']?></td>
+            <td>
+                <img src="../assets/<?php echo $data['gambar']; ?>" width="120">
+            </td>
             <td><?php echo $data['jenis_kendaraan']?></td>
             <td><?php echo $data['harga_sewa']?></td>
+            <td><?php echo $data['deskripsi']?></td>
             <td>
                 <a class="btn-action btn-edit" href="edit_kendaraan.php?id_kendaraan=<?php echo $data['id_kendaraan']; ?>">Edit</a>
                 <a class="btn-action btn-delete" href="../proses/delete_kendaraan.php?id_kendaraan=<?php echo $data['id_kendaraan']; ?>" 

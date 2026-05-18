@@ -51,11 +51,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
         <?php
         include '../proses/koneksi.php';
 
-        $query = mysqli_query($konek, "SELECT booking.*, 
-                kendaraan.jenis_kendaraan, 
-                users.nama, 
-                users.email, 
-                users.no_hp,
+        $query = mysqli_query($konek, "SELECT booking.*, kendaraan.jenis_kendaraan, users.nama, users.email, users.no_hp,
                 kendaraan.harga_sewa,
                 (kendaraan.harga_sewa * booking.lama_sewa) AS total_harga
                 FROM booking 
