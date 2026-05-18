@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -32,9 +35,12 @@ main {
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 22px;
     color: #ff7a00 !important;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
 }
 
 .navbar .nav-link {
@@ -163,7 +169,7 @@ main {
 /* Hero */
 .hero {
     position: relative;
-    padding: 100px 0;
+    padding: 90px 0;
     background: #fff;
     overflow: hidden;
     background: linear-gradient(240deg, #fff 25%, #fce9d7 100%);
@@ -183,9 +189,19 @@ main {
 }
 
 .hero h1 {
-    font-size: 42px;
+    font-size: 48px;
     font-weight: 700;
     margin-bottom: 20px;
+}
+
+.hero h1 span {
+    font-size: 58px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #ff7a00;
+    font-variation-settings: "wdth" 100;
 }
 
 .hero p {
@@ -202,8 +218,8 @@ main {
 
 .hero-bg {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     background: #ff7a00;
     border-radius: 50%;
     top: 50px;
@@ -213,7 +229,7 @@ main {
 }
 
 .hero .right img {
-    width: 380px;
+    width: 450px;
     border-radius: 20px;
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
     transition: 0.3s;
@@ -393,6 +409,24 @@ main {
     font-weight: 700;
     margin-bottom: 15px;
     position: relative;
+}
+
+.about-title span {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #ff7a00;
+    font-variation-settings: "wdth" 100;
+}
+
+.about-text span {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #ff7a00;
+    font-variation-settings: "wdth" 100;
 }
 
 .about-title::after {

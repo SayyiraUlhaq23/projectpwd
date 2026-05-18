@@ -93,14 +93,23 @@ if (!$data_user) {
         .from-booking-header h2{
             font-size: 34px;
             font-weight: 700;
-            color: #222;
             margin-bottom: 8px;
+            color: rgba(0,0,0,0.55);;
         }
 
         .form-booking-header p i{
             color: #ff7a00;
             font-size: 15px;
             margin-bottom: 0;
+        }
+
+        .form-booking-header h2 span {
+            font-family: "Bricolage Grotesque", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            color: #ff7a00;
+            font-variation-settings: "wdth" 100;
         }
 
         .booking-form{
@@ -210,7 +219,7 @@ if (!$data_user) {
                 </a>
               </li>
               <li>
-                <a class="dropdown-item dropdown-menu-custom text-danger" href="../proses/logout.php">
+                <a class="dropdown-item dropdown-menu-custom text-danger" href="proses/logout.php">
                   <i class="bi bi-box-arrow-in-right"></i> Logout
                 </a>
               </li>
@@ -233,7 +242,7 @@ if (!$data_user) {
             <div class="booking-icon">
                 <i class="bi bi-journal-check me-2"></i>
             </div>
-            <h2>Form Booking Kendaraan Sewa VelnoraJogja</h2>
+            <h2>Form Booking <span>VelnoraJogja</span></h2>
             <p><i>Lengkapi data booking kendaraan wisata Anda.</i></p>
         </div>
         <div class="card-body">

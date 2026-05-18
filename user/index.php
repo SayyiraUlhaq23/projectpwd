@@ -79,7 +79,7 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 <section class="hero">
 <div class="container text-center">
 <div class="left">
-      <h1>Selamat Datang di VelronaJogja</h1>
+      <h1>Selamat Datang di <span>VelronaJogja</span></h1>
       <p>Jelajahi Jogja dengan Gaya, Nyaman, & Berkesan</p>
       <!-- <p><b>100% Aman, Nyaman, dan Terjangkau di Jogja!</b></p> -->
       <a href="#daftar-kendaraan" class="btn btn-primary btn-dk"><i class="bi bi-grid-3x3-gap me-1"></i>
@@ -138,9 +138,9 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
 <section id="about" class="about-section">
     <div class="container">
         <div class="about-card">
-          <h2 class="about-title">About VelnoraJogja</h2>
+          <h2 class="about-title">About <span>VelnoraJogja</span></h2>
           <p class="about-text">
-            VelnoraJogja menyediakan layanan sewa kendaraan wisata seperti 
+            <span>VelnoraJogja</span> menyediakan layanan sewa kendaraan wisata seperti 
             <strong>Mobil VW, Vespa, dan Sepeda</strong> untuk pengalaman liburan terbaik di Yogyakarta.
           </p>
           <div class="about-info">
