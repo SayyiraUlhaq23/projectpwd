@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['admin_username'])){
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location:../proses/login_db.php");
     exit;
 }

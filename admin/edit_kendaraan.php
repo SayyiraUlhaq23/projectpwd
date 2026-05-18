@@ -35,7 +35,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
          <h1><i class="bi bi-pencil-square"></i> Ubah Data Kendaraan Sewa</h1>
     </div>
     <div class="form-card">
-        <form action="../proses/update_kendaraan.php" method="POST">
+        <form action="../proses/update_kendaraan.php" method="POST" enctype="multipart/form-data">
             <div class="form-group-admin">
                 <label for="id_kendaraan">ID Kendaraan</label>
                 <input type="text" name = "id_kendaraan" class="admin-input"
@@ -53,10 +53,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             </div>
             <div class="form-group-admin">
                 <label for="gambar">Gambar Kendaraan</label>
-            <div class="form-group-admin">
-                <label for="gambar">Gambar Kendaraan</label>
-                <input type="file" name="gambar" class="admin-input" accept="image/*"
-                value="<?= $data['gambar']; ?>">
+                <img src="../assets/<?= $data['gambar']; ?>"  width="120" class="mb-2">
+                <input type="file" name="gambar" class="admin-input" accept="image/*">
             </div>
             <div class="form-group-admin">
                 <label for="deskripsi">Deskripsi Kendaraan</label>
