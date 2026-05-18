@@ -2,7 +2,7 @@
 session_start();
 include '../proses/koneksi.php';
 
-if (!isset($_SESSION['id_user']) || $_SESSION['status'] != 'login') {
+if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'user') {
     header("Location:../proses/login_user.php");
     exit;
 }
@@ -28,6 +28,7 @@ $query = mysqli_query($konek, "SELECT booking.*,
 </head>
 
 <body class="mybooking-page">
+<!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="index.php">
@@ -45,19 +46,19 @@ $query = mysqli_query($konek, "SELECT booking.*,
             <i class="bi bi-house-door"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php#daftar-kendaraan">
+            <a class="nav-link" href="#daftar-kendaraan">
             <i class="bi bi-grid-3x3-gap me-1"></i> Katalog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php#about">
+            <a class="nav-link" href="#about">
             <i class="bi bi-info-circle"></i> About</a>
           </li>
 
-        <?php if(isset($_SESSION['status'])){ ?>
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'user'){ ?>
           <li class="nav-item dropdown">
             <a class="nav-link user-session" href="#" role="button" data-bs-toggle="dropdown">
                 <i class="bi bi-person-circle"></i>  
-                <?= $_SESSION['username']; ?>
+                <?= $_SESSION['user_username']; ?>
                 <i class="bi bi-chevron-down dropdown-custom"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">

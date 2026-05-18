@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location:../proses/login_db.php");
     exit;
 }
 ?>
-<!-- echo "[!] Anda masuk sebagai <b>" . $_SESSION['username'] . "<b>."; -->
 
 
 <!DOCTYPE html>
@@ -24,7 +23,7 @@ if(!isset($_SESSION['username'])){
 <div class="container-box">
     <div class="admin-info">
         <i class="bi bi-shield-lock"></i>
-        <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
+        <span>Anda masuk sebagai <b><?= $_SESSION['admin_username']; ?></b></span>
     </div>
     <div class="topbar">
         <h1><i class="bi bi-people"></i> Data Pengguna</h1>

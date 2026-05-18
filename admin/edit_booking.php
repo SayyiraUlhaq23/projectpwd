@@ -2,8 +2,8 @@
 session_start();
 include '../proses/koneksi.php';
 
-if (!isset($_SESSION['username'])) {
-    header("Location: login_db.php");
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location:../proses/login_db.php");
     exit;
 }
 
@@ -35,7 +35,7 @@ if (!$data) {
 <div class="container container-box">
     <div class="admin-info">
         <i class="bi bi-shield-lock"></i>
-        <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
+        <span>Anda masuk sebagai <b><?= $_SESSION['admin_username']; ?></b></span>
     </div>
     <div class="topbar">
         <h1><i class="bi bi-pencil-square"></i> Update Data Booking Kendaraan</h1>

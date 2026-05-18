@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['username'])){
-    header("Location: login.php");
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
+    header("Location:../proses/login_db.php");
     exit;
 }
 ?>
@@ -22,13 +22,13 @@ if(!isset($_SESSION['username'])){
 <div class="container container-box">
     <div class="admin-info">
         <i class="bi bi-shield-lock"></i>
-        <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
+        <span>Anda masuk sebagai <b><?= $_SESSION['admin_username']; ?></b></span>
     </div>
     <div class="topbar">
         <h1><i class="bi bi-car-front"></i> Tambah Kendaraan Sewa
     </div>
     <div class="form-card">
-    <form action="proses/input_kendaraan.php" method="POST">
+    <form action="../proses/input_kendaraan.php" method="POST" enctype="multipart/form-data">
         <div class="form-group-admin">
             <label for="id_kendaraan">ID Kendaraan</label>
             <input type="text" name = "id_kendaraan" class="admin-input" placeholder="Masukkan ID kendaraan" required>
@@ -38,9 +38,18 @@ if(!isset($_SESSION['username'])){
             <input type="text" name = "jenis_kendaraan" class="admin-input" placeholder="Contoh: Mobil Jeep" required>
         </div>
         <div class="form-group-admin">
+            <label for="gambar">Gambar Kendaraan</label>
+            <input type="file" name="gambar" class="form-control" accept="image/*" required>
+        </div>
+        <div class="form-group-admin">
+            <label for="deskripsi">Deskripsi Kendaraan</label>
+            <textarea name="deskripsi" class="admin-input" rows="4" placeholder="Deskripsi kendaraan..." required></textarea>
+        </div>
+        <div class="form-group-admin">
             <label for="harga_sewa">Harga Sewa</label>
             <input type="text" name = "harga_sewa" class="admin-input" placeholder="Contoh: 350000" required>
         </div>
+
         <div class="form-action">
             <a href="tampil_kendaraan.php" class="btn-back">
                 ← Kembali ke beranda

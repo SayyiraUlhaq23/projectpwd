@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location:../proses/login_db.php");
     exit;
 }
@@ -22,7 +22,7 @@ if(!isset($_SESSION['username'])){
 <div class="dashboard-wrapper">
     <div class="sidebar">
         <h2>Selamat Datang, <br>
-            <span><?php echo $_SESSION['username'];?>!</span>
+            <span><?php echo $_SESSION['admin_username'];?>!</span>
         </h2>
         <p>Admin Dashboard Sistem</p>
         <h3>Menu</h3>

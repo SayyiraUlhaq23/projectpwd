@@ -8,7 +8,7 @@ $query = mysqli_query($konek,"SELECT * FROM kendaraan WHERE id_kendaraan='$id_ke
 $data = mysqli_fetch_array($query);
 
 session_start();
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location:../proses/login_db.php");
     exit;
 }
@@ -29,7 +29,7 @@ if(!isset($_SESSION['username'])){
 <div class="container container-box">
     <div class="admin-info">
          <i class="bi bi-shield-lock"></i>
-         <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
+         <span>Anda masuk sebagai <b><?= $_SESSION['admin_username']; ?></b></span>
     </div>
     <div class="topbar">
          <h1><i class="bi bi-pencil-square"></i> Ubah Data Kendaraan Sewa</h1>

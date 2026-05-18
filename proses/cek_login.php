@@ -14,7 +14,8 @@ if($role == "admin"){
     $cek = mysqli_num_rows($query);
 
     if($cek > 0){
-        $_SESSION['username'] = $username;
+        $_SESSION['id_admin'] = $data['id_admin'];
+        $_SESSION['admin_username'] = $username;
         $_SESSION['role'] = 'admin';
         $_SESSION['status'] = 'login';
         header("Location: ../admin/dashboard.php");
@@ -35,7 +36,7 @@ if($role == "admin"){
 
         $_SESSION['id_user'] = $data['id_user'];
         $_SESSION['nama'] = $data['nama'];
-        $_SESSION['username'] = $data['username'];
+        $_SESSION['user_username'] = $data['username'];
         $_SESSION['email'] = $data['email'];
         $_SESSION['no_hp'] = $data['no_hp'];
         $_SESSION['role'] = 'user';

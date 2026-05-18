@@ -43,11 +43,11 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
             <i class="bi bi-info-circle"></i> About</a>
           </li>
 
-        <?php if(isset($_SESSION['status'])){ ?>
+        <?php if(isset($_SESSION['role']) && $_SESSION['role'] == 'user'){ ?>
           <li class="nav-item dropdown">
             <a class="nav-link user-session" href="#" role="button" data-bs-toggle="dropdown">
                 <i class="bi bi-person-circle"></i>  
-                <?= $_SESSION['username']; ?>
+                <?= $_SESSION['user_username']; ?>
                 <i class="bi bi-chevron-down dropdown-custom"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">

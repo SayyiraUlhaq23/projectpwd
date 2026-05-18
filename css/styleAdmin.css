@@ -531,6 +531,29 @@ td:last-child{
     font-weight: 500;
 }
 
+input[type="file"].admin-input {
+    width: 100%;
+    padding: 10px;
+    color: #e2e8f0;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: transparent; /* biarkan transparan */
+}
+
+input[type="file"]::file-selector-button {
+    padding: 8px 12px;
+    margin-right: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+    color: #202b35;
+    cursor: pointer;
+}
+
+/* hover */
+input[type="file"]::file-selector-button:hover {
+    background: rgba(255,255,255,0.15);
+}
 @media (max-width: 768px){
     td:last-child{
         display: flex;

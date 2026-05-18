@@ -2,7 +2,7 @@
 include '../proses/koneksi.php';
 session_start();
 
-if(!isset($_SESSION['username'])){
+if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
     header("Location:../proses/login_db.php");
     exit;
 }
@@ -28,7 +28,7 @@ $data = mysqli_fetch_array($query);
 <div class="container container-box">
     <div class="admin-info">
         <i class="bi bi-shield-lock"></i>
-        <span>Anda masuk sebagai <b><?= $_SESSION['username']; ?></b></span>
+        <span>Anda masuk sebagai <b><?= $_SESSION['admin_username']; ?></b></span>
     </div>
     <div class="topbar">
         <h1><i class="bi bi-person-gear"></i> Ubah Data Pengguna</h1>
