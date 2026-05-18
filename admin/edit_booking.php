@@ -124,7 +124,6 @@ if (!$data) {
 
             </select>
         </div>
-
         <div class="form-action form-action-right">
             <button type="submit" class="btn-save">
                 <i class="bi bi-repeat"></i> Update Data

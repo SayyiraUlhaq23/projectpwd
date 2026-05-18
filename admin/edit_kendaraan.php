@@ -51,12 +51,23 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 <input type="text" name = "harga_sewa" class="admin-input"
                 value="<?= $data['harga_sewa']; ?>">
             </div>
+            <div class="form-group-admin">
+                <label for="gambar">Gambar Kendaraan</label>
+            <div class="form-group-admin">
+                <label for="gambar">Gambar Kendaraan</label>
+                <input type="file" name="gambar" class="admin-input" accept="image/*"
+                value="<?= $data['gambar']; ?>">
+            </div>
+            <div class="form-group-admin">
+                <label for="deskripsi">Deskripsi Kendaraan</label>
+                <textarea name="deskripsi" class="admin-input" rows="4"><?= $data['deskripsi']; ?></textarea>
+            </div>
             <div class="form-action form-action-right">
                 <button type="submit" class="btn-save">
                     <i class="bi bi-repeat"></i> Update Data
                 </button>
             </div>
-        </form>
+             </form>
     </div>
     <div class="form-action">
         <a href="tampil_kendaraan.php" class="btn-back">

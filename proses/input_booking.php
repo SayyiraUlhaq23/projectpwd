@@ -36,6 +36,6 @@ if ($query) {
     exit;
 
 } else {
-    echo "Gagal menyimpan booking!";
+    echo "Gagal menyimpan booking!"  . mysqli_error($konek);
 }
 ?>
