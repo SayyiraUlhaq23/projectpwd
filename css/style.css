@@ -62,7 +62,7 @@ main {
     content: "";
     width: 0%;
     height: 2px;
-    background: #ff9800;
+    background: #ff9800 !important;
     position: absolute;
     left: 0;
     bottom: 4px;
@@ -74,16 +74,31 @@ main {
     width: 100%;
 }
 
+.dropdown-item:focus,
+.dropdown-item:active {
+    background-color: rgba(0, 0, 0, 0.08) !important; /* abu halus */
+    color: inherit !important;
+    box-shadow: none !important;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.dropdown-item:focus-visible {
+    outline: none !important;
+}
+
 .logout-icon{
   color: red !important;
   font-size: 28px;
-  text-decoration: none;
+  text-decoration: none !important;
   display: flex;
   align-items: center;
 }
 
 .logout-icon:hover{
-  color: darkred;
+  color: darkred !important;
 }
 
 .btn-daftar {
@@ -588,6 +603,15 @@ main {
     background: #eb6f00;
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255,122,0,0.3);
+}
+
+.error-message{
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    font-size: 14px;
 }
 
 

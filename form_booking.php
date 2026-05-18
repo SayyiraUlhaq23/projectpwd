@@ -205,7 +205,7 @@ if (!$data_user) {
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
-                <a class="dropdown-item dropdown-menu-custom" href="mybooking.php">
+                <a class="dropdown-item dropdown-menu-custom" href="user/mybooking.php">
                   <i class="bi bi-journal-text"></i> Reservasi Saya
                 </a>
               </li>

@@ -21,7 +21,7 @@ if($role == "admin"){
         header("Location: ../admin/dashboard.php");
         exit;
     } else {
-        header("Location: login_db.php?pesan=gagal");
+        header("Location: login_db.php?ket=gagal");
         exit;
     }
 
@@ -45,7 +45,7 @@ if($role == "admin"){
         header("Location: ../user/index.php");
         exit;
     } else {
-        header("Location: login_user.php?pesan=gagal");
+        header("Location: login_user.php?ket=gagal");
         exit;
     }
 }

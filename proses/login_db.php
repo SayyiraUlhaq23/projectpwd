@@ -21,11 +21,10 @@
         if($_GET['ket']=='gagal'){
             echo "
             <div class='error-message'>
-                Username atau password salah.
+                Username atau Password salah!
             </div> ";
         }
     }
-    $_SESSION['role'] = 'admin';
     ?>
 
     <!-- form login -->

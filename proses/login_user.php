@@ -107,9 +107,16 @@ if (isset($_POST['login'])) {
             <p><i>Login melanjutkan reservasi kendaraan favorit Anda.</i></p>
         </div>
         <div class="login-body">
-            <?php if (isset($error)) { ?>
-                <div class="error"><?= $error; ?></div>
-            <?php } ?>
+          <?php
+            if(isset($_GET['ket'])){
+              if($_GET['ket']=='gagal'){
+                echo "
+                <div class='error-message'>
+                  Username atau Password salah!
+                </div> ";
+              }
+            }
+          ?>
 
             <form action="cek_login.php" method="POST">
               <input type="hidden" name="role" value="user">
