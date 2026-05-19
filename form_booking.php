@@ -2,7 +2,7 @@
 session_start();
 include 'proses/koneksi.php';
 
-if (!isset($_SESSION['id_user'])) {
+if (!isset($_SESSION['id_user']) || $_SESSION['role'] != 'user') {
     header("Location: proses/login_user.php");
     exit;
 }
