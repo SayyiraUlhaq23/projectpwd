@@ -49,6 +49,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             <label for="harga_sewa">Harga Sewa</label>
             <input type="text" name = "harga_sewa" class="admin-input" placeholder="Contoh: 350000" required>
         </div>
+        <div class="form-group-admin">
+            <label for="stok">Stok Kendaraan</label>
+            <input type="number" name="stok" class="admin-input" placeholder="Contoh: 20" required>
+        </div>
 
         <div class="form-action">
             <a href="tampil_kendaraan.php" class="btn-back">

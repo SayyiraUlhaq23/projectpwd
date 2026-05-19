@@ -126,6 +126,15 @@ $query_kendaraan = mysqli_query($konek, "SELECT * FROM kendaraan");
             <div class="btn btn-warning">
               Rp <?= number_format($data['harga_sewa'],0,',','.'); ?> / hari
             </div>
+            <?php if($data['stok'] > 0){ ?>
+                <div class="btn-stok">
+                    Tersedia: <?= $data['stok']; ?>
+                </div>
+            <?php } else { ?>
+                <div class="btn-stok habis">
+                    Habis
+                </div>
+            <?php } ?>
           </div>
         </div>
         </div>

@@ -41,7 +41,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             <th>Gambar</th>
             <th>Jenis Kendaraan</th>
             <th>Harga Sewa (per hari)</th>
-             <th>Deskripsi</th>
+            <th>Stok</th>
+            <th>Deskripsi</th>
             <th colspan="2">Aksi</th>
         </tr>
         </thead>
@@ -60,6 +61,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
             </td>
             <td><?php echo $data['jenis_kendaraan']?></td>
             <td><?php echo $data['harga_sewa']?></td>
+            <td><?php echo $data['stok']?></td>
             <td><?php echo $data['deskripsi']?></td>
             <td>
                 <a class="btn-action btn-edit" href="edit_kendaraan.php?id_kendaraan=<?php echo $data['id_kendaraan']; ?>">Edit</a>

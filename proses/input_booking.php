@@ -32,6 +32,8 @@ $query = mysqli_query($konek, "INSERT INTO booking (id_kendaraan, tanggal, lama_
 
 if ($query) {
     $id_booking = mysqli_insert_id($konek);
+    mysqli_query($konek,"UPDATE kendaraan SET stok = stok - 1
+                WHERE id_kendaraan='$id_kendaraan'");
      header("Location: ../user/invoice.php?id=$id_booking");
     exit;
 

@@ -52,6 +52,11 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
                 value="<?= $data['harga_sewa']; ?>">
             </div>
             <div class="form-group-admin">
+                <label for="stok">Stok Kendaraan</label>
+                <input type="number" name="stok" class="admin-input"
+                value="<?= $data['stok']; ?>">
+            </div>
+            <div class="form-group-admin">
                 <label for="gambar">Gambar Kendaraan</label>
                 <img src="../assets/<?= $data['gambar']; ?>"  width="120" class="mb-2">
                 <input type="file" name="gambar" class="admin-input" accept="image/*">
